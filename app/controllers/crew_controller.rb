@@ -10,7 +10,7 @@ class CrewController < ApplicationController
   end
 
   def update
-    sleep 2
+    sleep 1
     @member = Crew.find params[:id]
     # If we can successfully update the model, respond with most up to date
     # attributes.
@@ -34,7 +34,7 @@ class CrewController < ApplicationController
   end
 
   def destroy
-    sleep 2
+    sleep 1
     member = Crew.find params[:id]
     member.destroy()
     render json: {}  # Backbone needs some response back from the server

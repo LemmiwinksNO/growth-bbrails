@@ -6,6 +6,12 @@ gem 'rails', '3.2.11'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'  # db
+gem "thin"  # Server
+gem "rabl"
+gem "oj"
+gem "gon"
+gem "js-routes"
+gem "jquery-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -16,8 +22,9 @@ group :assets do
   gem "compass-rails"
   # gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                                 # :github => 'anjlab/bootstrap-rails'
+# gem "font-awesome-sass-rails"
   # gem "bootstrap-sass-rails"
-  gem "zurb-foundation", '~> 4.0.0'
+  gem "zurb-foundation"
   gem "foundation-icons-sass-rails"
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -25,14 +32,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem "thin"  # Server
-gem "rabl"
-gem "oj"
-gem "gon"
-gem "js-routes"
-# gem "font-awesome-sass-rails"
-gem "jquery-rails"
 
 group :development, :test do
 	gem 'rails-dev-tweaks'

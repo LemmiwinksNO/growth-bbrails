@@ -15,3 +15,8 @@ ul, ol, dl								{  list-style-type: none;  }
 	section									{  margin: 20px 0;  }
 }
 [data-wrapper].opacity		{  @include opacity(0.4);  }
+
+.row,
+.contain-to-grid .top-bar {  max-width: 100em;  }
+
+.ellipsis                 {  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;  }

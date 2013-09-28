@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
 		gon.environment = Rails.env
 	end
 
-	def static
+	def staticlist
 	end
+
+  def staticform
+  end
 end

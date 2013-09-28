@@ -3,6 +3,7 @@
   class Edit.Controller extends App.Controllers.Base
 
     initialize: (options) ->
+      # Sets crew and id from options.crew and options.id
       { crew, id } = options
       # Use crew if we have it, else request it.
       # Need latter when user routes directly to edit.

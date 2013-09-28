@@ -7,6 +7,8 @@
 
 <%= javascript_tag do %>
 	$(function() {
+    <!-- Need this for select dropdowns. -->
+    $(document).foundation();
 		PlanetExpress.start({
       environment: "<%= Rails.env %>"
     });

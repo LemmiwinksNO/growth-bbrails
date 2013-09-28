@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require lib/foundation.min
 //= require lib/underscore
 //= require lib/backbone
 //= require lib/marionette
