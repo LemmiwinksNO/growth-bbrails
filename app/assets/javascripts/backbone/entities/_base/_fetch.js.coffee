@@ -1,3 +1,5 @@
+# I don't understand how this works.
+
 @PlanetExpress.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
 
   # Wait until all models are fetched, then call callback.

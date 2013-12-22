@@ -17,7 +17,7 @@
 				@[key] = val
 
 		# Custom remove shows fancy red toggleWrapper if model is destroyed,
-		# otherwise it jsut removes the view.
+		# otherwise it just removes the view.
 		remove: (args...) ->
 			console.log "removing", @
 			# If model is destroyed

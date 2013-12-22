@@ -1,0 +1,1 @@
+attributes :title, :project, :status, :description

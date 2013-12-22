@@ -1,3 +1,11 @@
+
+# <strong>Controllers</strong> <br>
+# (1) Responsible for managing within a sub-module <br>
+# (2) Instantiates and wires up views <br>
+# (3) Manages entities <br>
+# (4) responds to view events <br>
+# (5) Bubbles up information to parent module <br>
+
 @PlanetExpress.module "CrewApp.List", (List, App, Backbone, Marionette, $, _) ->
 
   class List.Controller extends App.Controllers.Base
@@ -5,6 +13,8 @@
     initialize: ->
       crew = App.request "crew:entities"
 
+      # entities/_base/_fetch.js.coffee
+      # Purpose: Waits until all models are fetched, then calls callback.
       App.execute "when:fetched", crew, =>
 
         @layout = @getLayoutView()
@@ -14,10 +24,10 @@
           @panelRegion()
           @crewRegion crew
 
-        # Use our custom show method which shows @layout and also attaches
-        # a listener to its close event. This is easier than having this
-        # line in every controller -> @listenTo @layout, "close", @close.
-        # App.mainRegion.show @layout
+        # Custom controller show method - Shows @layout in mainRegion and
+        # listens to its close event so we know to clean up this controller.
+        #   @listenTo @layout, "close", @close.
+        #   App.mainRegion.show @layout
         @show @layout
 
     onClose: ->
@@ -36,6 +46,8 @@
 
       @layout.panelRegion.show panelView
 
+    # Setup newRegion. This is the new module's responsibility, so
+    # let it handle this.
     newRegion: ->
       # region = @layout.newRegion
       # # This is how we communicate between controllers
@@ -68,11 +80,12 @@
       new List.Crew
         collection: crew
 
+    getLayoutView: ->
+      new List.Layout
+
     getPanelView: ->
       new List.Panel
 
     getTitleView: ->
       new List.Title
 
-    getLayoutView: ->
-      new List.Layout

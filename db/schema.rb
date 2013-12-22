@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130409063817) do
+ActiveRecord::Schema.define(:version => 20130928152011) do
 
   create_table "crews", :force => true do |t|
     t.integer  "age"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(:version => 20130409063817) do
     t.text     "quote"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "notdos", :force => true do |t|
+    t.string   "title"
+    t.string   "project"
+    t.string   "status"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
 end

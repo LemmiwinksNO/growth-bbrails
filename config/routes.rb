@@ -1,9 +1,17 @@
 Episode07::Application.routes.draw do
-	resources :crew
+	# Add index/create/new/edit/show/update/destroy routes
+  # Maps HTTP verbs to controller actions automatically.
+  resources :crew
+  resources :notdo
 
+  # localhost/staticlist -> renders views/application/staticlist
   match "staticlist" => "application#staticlist"
   match "staticform" => "application#staticform"
+
+  # Set root route (instead of public/index.html)
+  # localhost -> renders views/application/index
   root :to => 'application#index'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,188 @@
+<div class="row">
+  <div class="large-4 columns">
+    <div class="box">
+      <div class="box-header text-center">
+        <h2>Not Doing</h2>
+      </div>
+      <div class="box-content scrollable">
+        <ul class="items">
+          <li class="item">
+            <div class="row">
+              <div class="large-2 columns">
+                <div class="avatar">
+                  <i class="fi-star"></i>
+                </div>
+              </div>
+              <div class="large-9 columns">
+                <div class="item-content">
+                  <div class="title ellipsis">Title</div>
+                  <div class="description ellipsis">SuperLongdescription taht is actually a sentence you see so it is really long.</div>
+                </div>
+                  <div class="progress success"><span class="meter" style="width:100%"></span></div>
+                </div>
+              <div class="large-offset-1"></div>
+            </div>
+          </li>
+          <li class="item">
+            <div class="row">
+              <div class="large-2 columns">
+                <div class="avatar">
+                  <i class="fi-heart"></i>
+                </div>
+              </div>
+              <div class="large-9 columns">
+                <div class="item-content">
+                  <div class="title ellipsis">Title</div>
+                  <div class="description ellipsis">SuperLongdescription taht is actually a sentence you see so it is really long So long in fact it is over 2 lines.</div>
+                  <div class="progress round"><span class="meter" style="width:40%"></span></div>
+                </div>
+              </div>
+              <div class="large-offset-1"></div>
+            </div>
+          </li>
+          <li class="item">
+            <div class="row">
+              <div class="large-2 columns">
+                <div class="avatar">
+                  <i class="fi-target-two"></i>
+                </div>
+              </div>
+              <div class="large-9 columns">
+                <div class="item-content">
+                  <div class="title ellipsis">Title</div>
+                  <div class="description ellipsis">SuperLongdescription taht is actually a sentence you see so it is really long.</div>
+                  <div class="progress"><span class="meter" style="width:0%"></span></div>
+                </div>
+              </div>
+              <div class="large-offset-1"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="box">
+      <div class="box-header text-center">
+        <h2>Doing</h2>
+      </div>
+      <div class="box-content scrollable">
+        <ul class="items">
+          <li class="item">
+            <div class="row">
+              <div class="large-2 columns">
+                <div class="avatar">
+                  <i class="fi-star"></i>
+                </div>
+              </div>
+              <div class="large-9 columns">
+                <div class="item-content">
+                  <div class="title ellipsis">Title</div>
+                  <div class="description ellipsis">SuperLongdescription taht is actually a sentence you see so it is really long.</div>
+                </div>
+                  <div class="progress success"><span class="meter" style="width:100%"></span></div>
+                </div>
+              <div class="large-offset-1"></div>
+            </div>
+          </li>
+          <li class="item">
+            <div class="row">
+              <div class="large-2 columns">
+                <div class="avatar">
+                  <i class="fi-heart"></i>
+                </div>
+              </div>
+              <div class="large-9 columns">
+                <div class="item-content">
+                  <div class="title ellipsis">Title</div>
+                  <div class="description ellipsis">SuperLongdescription taht is actually a sentence you see so it is really long So long in fact it is over 2 lines.</div>
+                  <div class="progress round"><span class="meter" style="width:40%"></span></div>
+                </div>
+              </div>
+              <div class="large-offset-1"></div>
+            </div>
+          </li>
+          <li class="item">
+            <div class="row">
+              <div class="large-2 columns">
+                <div class="avatar">
+                  <i class="fi-target-two"></i>
+                </div>
+              </div>
+              <div class="large-9 columns">
+                <div class="item-content">
+                  <div class="title ellipsis">Title</div>
+                  <div class="description ellipsis">SuperLongdescription taht is actually a sentence you see so it is really long.</div>
+                  <div class="progress"><span class="meter" style="width:0%"></span></div>
+                </div>
+              </div>
+              <div class="large-offset-1"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="large-4 columns">
+    <div class="box">
+      <div class="box-header text-center">
+        <h2>Done</h2>
+      </div>
+      <div class="box-content scrollable">
+        <ul class="items">
+          <li class="item">
+            <div class="row">
+              <div class="large-2 columns">
+                <div class="avatar">
+                  <i class="fi-star"></i>
+                </div>
+              </div>
+              <div class="large-9 columns">
+                <div class="item-content">
+                  <div class="title ellipsis">Title</div>
+                  <div class="description ellipsis">SuperLongdescription taht is actually a sentence you see so it is really long.</div>
+                </div>
+                  <div class="progress success"><span class="meter" style="width:100%"></span></div>
+                </div>
+              <div class="large-offset-1"></div>
+            </div>
+          </li>
+          <li class="item">
+            <div class="row">
+              <div class="large-2 columns">
+                <div class="avatar">
+                  <i class="fi-heart"></i>
+                </div>
+              </div>
+              <div class="large-9 columns">
+                <div class="item-content">
+                  <div class="title ellipsis">Title</div>
+                  <div class="description ellipsis">SuperLongdescription taht is actually a sentence you see so it is really long So long in fact it is over 2 lines.</div>
+                  <div class="progress round"><span class="meter" style="width:40%"></span></div>
+                </div>
+              </div>
+              <div class="large-offset-1"></div>
+            </div>
+          </li>
+          <li class="item">
+            <div class="row">
+              <div class="large-2 columns">
+                <div class="avatar">
+                  <i class="fi-target-two"></i>
+                </div>
+              </div>
+              <div class="large-9 columns">
+                <div class="item-content">
+                  <div class="title ellipsis">Title</div>
+                  <div class="description ellipsis">SuperLongdescription taht is actually a sentence you see so it is really long.</div>
+                  <div class="progress"><span class="meter" style="width:0%"></span></div>
+                </div>
+              </div>
+              <div class="large-offset-1"></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

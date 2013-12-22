@@ -1,3 +1,4 @@
+console.log('app.js');
 @PlanetExpress = do (Backbone, Marionette) ->
 
   App = new Marionette.Application
@@ -11,7 +12,7 @@
     mainRegion:   "#main-region"
     footerRegion: "#footer-region"
 
-  # add resources :crew to routes.rb to make this path available.
+  # App's root route -> currently /crew
   App.rootRoute = Routes.crew_index_path()
 
   App.addInitializer ->
@@ -30,6 +31,7 @@
     App.unregister instance, id if App.environemnt is "development" or "test"
 
   App.on "initialize:after", ->
+    console.log("initialize:after");
     @startHistory()
     @navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
 

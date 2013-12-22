@@ -1,5 +1,9 @@
+# Top level methods, logic, and events that manage everything within 'CrewApp'
+
 @PlanetExpress.module "CrewApp", (CrewApp, App, Backbone, Marionette, $, _) ->
 
+  # AppRouters are just a list of routes and a designated controller.
+  # Point is to separate router from controller.
   class CrewApp.Router extends Marionette.AppRouter
     appRoutes:
       "crew/:id/edit" : "edit"
@@ -21,10 +25,11 @@
         id: id
         member: member
 
+  # When user clicks add, setup New module.
   App.commands.setHandler "new:crew:member", (region) ->
     API.newCrew region
 
-  # When crew member is clicked or created, redirect to edit page.
+  # When crew member is clicked or created, redirect to edit page and update URL.
   App.vent.on "crew:member:clicked crew:created", (member) ->
     App.navigate Routes.edit_crew_path(member.id)
     API.edit member.id, member
@@ -35,5 +40,6 @@
     API.list()
 
   App.addInitializer ->
+    # Instantiate our appRouter and designate the controller.
     new CrewApp.Router
       controller: API

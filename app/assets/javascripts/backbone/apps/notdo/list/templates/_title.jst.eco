@@ -1,0 +1,18 @@
+<div id="page-title">
+  <div class="row">
+    <div class="large-12 columns">
+      <h1>Not Doing List</h1>
+      <h4>Set things down, pick things up</h4>
+      <div id="page-icons">
+        <i class="accessibility foundicon-person"></i>
+        <i class="accessibility foundicon-person"></i>
+        <i class="accessibility foundicon-person"></i>
+      </div>
+    </div>
+  </div>
+</div>
+<ul class="breadcrumbs">
+  <li><a href="#">Home</a></li>
+  <li class="current"><a href="#">Notdoing</a></li>
+  <li class="unavailable"><a href="#">Item</a></li>
+</ul>

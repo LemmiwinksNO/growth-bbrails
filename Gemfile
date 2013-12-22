@@ -5,13 +5,19 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'  # db
-gem "thin"  # Server
-gem "rabl"
-gem "oj"
-gem "gon"
-gem "js-routes"
+gem 'sqlite3'       # db
+gem "thin"          # Server
+gem "rabl"          # For sending JSON
+gem "oj"            # For sending JSON
 gem "jquery-rails"
+
+# Bootstrap data in the application so you don't have to fetch right away.
+gem "gon"
+
+# Exposes rails url helpers as a global Routes object that you can use on frontend.
+# rake routes in terminal shows all the routes available for your server, this
+# lets you see the same routes on the front end through the Routes object.
+gem "js-routes"
 
 # Gems used only for assets and not required
 # in production environments by default.

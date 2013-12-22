@@ -8,7 +8,7 @@
               <span id="logo">
                 <img src="assets/ship.png" />
               </span>
-              Planet Express
+              Growth App
             </a>
           </h1>
           </li>
@@ -19,14 +19,7 @@
               <li>
             <a href="#">
               <i class="general foundicon-graph"></i>
-              Dashboard
-            </a>
-          </li>
-          <li class="divider"></li>
-          <li class="active">
-            <a href="#">
-              <i class="social foundicon-torso"></i>
-              Crew
+              Not Doing List
             </a>
           </li>
           <li class="divider"></li>
