@@ -20,61 +20,65 @@
       "click [data-form-button='cancel']" : "form:cancel"
 
     modelEvents:
-      "change:_errors"  : "changeErrors"
+      "change:_errors"  : "changeErrors"  # Set via custom save method
       "sync:start"      : "syncStart"
       "sync:stop"       : "syncStop"
 
+    # Set properties off @options object directly on the view.
+    # i.e. @config = @options.config
     initialize: ->
-      # Set properties off @options object directly on the view.
-      # i.e. @options.config -> @config
       @setInstancePropertiesFor "config", "buttons"
 
     # Results of data serialization are passed to the template that is rendered.
+    # Serialize models/collections by calling toJSON on them.
     serializeData: ->
       footer: @config.footer
-      # ? cs operator - if @options.buttons is null or undefined, stop. The second
-      # ? sets the value if null or undefined.
       buttons: @buttons?.toJSON() ? false
 
+    # _defer pushes this callback to the bottom of the callstack. We want
+    # this done last. Only call functions if set to true in config
     onShow: ->
-      # Pushes this callback to the bottom of the callstack. We want this done last.
-      # Only call this if set to true in config
       _.defer =>
         @focusFirstInput() if @config.focusFirstInput
         @buttonPlacement() if @buttons
 
+    # Focus on first input that is visible and enabled
+    focusFirstInput: ->
+      @$(":input:visible:enabled:first").focus()
+
+    # Add left/right placement
     buttonPlacement: ->
       @ui.buttonContainer.addClass @buttons.placement
-
-    focusFirstInput: ->
-      # Find first input that is visible enabled and focus on it.
-      @$(":input:visible:enabled:first").focus()
 
     # Determine data-type for style reasons.
     getFormDataType: ->
       if @model.isNew() then "new" else "edit"
 
-    # When _errors property changes, call addErrors
+    # model's _errors property has changed.
+    # Check if config is set to check errors (default)
+    # Add or remove errors in the DOM
     changeErrors: (model, errors, options) ->
-      if @config.errors  # if errors is set to true
-        # Did we unset or set _errors?
-        if _.isEmpty(errors) then @removeErrors() else @addErrors errors
+        if @config.errors
+          if _.isEmpty(errors) then @removeErrors() else @addErrors errors
 
+    # Find all elements with .error and remove the class, then find all
+    # "small" and remove them.
     removeErrors: ->
-      # Round up all the elements with .error class and remove it, then
-      # find all the small elements within and remove them.
       @$(".error").removeClass("error").find("small").remove()
 
     # wrapper for addError
+    # key = name, value = array of errors
+    # Only send the first error
     addErrors: (errors = {}) ->
       for name, array of errors
-        @addError name, array[0]  # Send first item in array
+        @addError name, array[0]
 
+    # Find element with error using name.
+    # Create jquery object and add error message
+    # Set error message after el, then add error class to nearest .row up the DOM
     addError: (name, error) ->
       el = @$("[name='#{name}']")
-      sm = $("<small>").text(error)  # create jquery object and add error message
-      # Set small error message after el, then add error class to nearest .row
-      # closest tells jquery to traverse up the DOM until it finds .row
+      sm = $("<small>").text(error)
       el.after(sm).closest(".row").addClass("error")
 
     # Add opacity class on sync:start (visual loading cue)

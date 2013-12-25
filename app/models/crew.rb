@@ -3,6 +3,6 @@ class Crew < ActiveRecord::Base
 
   # Always validate :name
 	validates_presence_of :name
-  # Validate the rest IF there is an existing model.
+  # Validate these unless its a new model.
 	validates_presence_of :title, :origin, :age, :avatar, :species, :unless => proc { new_record? }
 end

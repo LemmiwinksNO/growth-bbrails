@@ -3,35 +3,35 @@
   class Edit.Controller extends App.Controllers.Base
 
     initialize: (options) ->
-      # Sets crew and id from options.crew and options.id
-      { crew, id } = options
-      # Use crew if we have it, else request it.
+      # Sets id and member from options.id and options.member
+      { id, member } = options
+
+      # Use crew member model if we have it, else request it.
       # Need latter when user routes directly to edit.
-      crew or= App.request "crew:entity", id
+      member or= App.request "crew:entity", id
 
-      @listenTo crew, "updated", ->
-        console.log "crew updated"
-        App.vent.trigger "crew:updated", crew
+      @listenTo member, "updated", ->
+        App.vent.trigger "crew:member:updated", member
 
-      # Don't load the eidt page until crew model is fetched.
-      App.execute "when:fetched", crew, =>
-        @layout = @getLayoutView crew
+      # Don't load the edit page until crew member model is fetched.
+      App.execute "when:fetched", member, =>
+        @layout = @getLayoutView member
 
         @listenTo @layout, "show", =>
-          @titleRegion crew
-          @formRegion crew
+          @titleRegion member
+          @formRegion member
 
         @show @layout
 
-    titleRegion: (crew) ->
-      titleView = @getTitleView crew
+    titleRegion: (member) ->
+      titleView = @getTitleView member
       @layout.titleRegion.show titleView
 
-    formRegion: (crew) ->
-      editView = @getEditView crew
+    formRegion: (member) ->
+      editView = @getEditView member
 
       @listenTo editView, "form:cancel", ->
-        App.vent.trigger "crew:cancelled", crew
+        App.vent.trigger "crew:member:cancelled", member
 
       # Wrap editView in a form.
       formView = App.request "form:wrapper", editView,
@@ -39,14 +39,14 @@
 
       @layout.formRegion.show formView
 
-    getTitleView: (crew) ->
+    getTitleView: (member) ->
       new Edit.Title
-        model: crew
+        model: member
 
-    getLayoutView: (crew) ->
+    getLayoutView: (member) ->
       new Edit.Layout
-        model: crew
+        model: member
 
-    getEditView: (crew) ->
+    getEditView: (member) ->
       new Edit.Crew
-        model: crew
+        model: member

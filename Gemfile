@@ -28,7 +28,7 @@ group :assets do
   gem "compass-rails"
   # gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                                 # :github => 'anjlab/bootstrap-rails'
-# gem "font-awesome-sass-rails"
+  # gem "font-awesome-sass-rails"
   # gem "bootstrap-sass-rails"
   gem "zurb-foundation"
   gem "foundation-icons-sass-rails"

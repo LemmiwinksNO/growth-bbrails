@@ -8,6 +8,12 @@
     model: Entities.Button
 
   API =
+
+    # Get default button configuration.
+    # Add buttons to array based on configuration.
+    # Reverse array if buttons are placed on the left (submit left, cancel right)
+    # Create a backbone collection, passing in our array of buttons.
+    # Set placement property on collection so we can access it later.
     getFormButtons: (buttons, model) ->
       buttons = @getDefaultButtons buttons, model
 

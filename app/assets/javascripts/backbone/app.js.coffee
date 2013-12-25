@@ -1,4 +1,4 @@
-console.log('app.js');
+
 @PlanetExpress = do (Backbone, Marionette) ->
 
   App = new Marionette.Application
@@ -31,7 +31,6 @@ console.log('app.js');
     App.unregister instance, id if App.environemnt is "development" or "test"
 
   App.on "initialize:after", ->
-    console.log("initialize:after");
     @startHistory()
     @navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
 

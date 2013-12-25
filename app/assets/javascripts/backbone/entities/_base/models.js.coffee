@@ -12,6 +12,8 @@
     isDestroyed: ->
       @get "_destroy"
 
+    # Out custom save method waits for server reponse before updating
+    # model attributes.
     save: (data, options = {}) ->
       isNew = @isNew()
 
@@ -22,25 +24,25 @@
         success: _.bind(@saveSuccess, @, isNew, options.collection)
         error:   _.bind(@saveError, @)
 
-      @unset "_errors"  # because we don't want this property hanging around
+      @unset "_errors"  # unset each save so errors don't linger
       super data, options  # Call Backbone.model.save
 
-    # Point here is to create specific events we can bind to. Rather than bind to
-    # sync event, we can bind to created or updated events.
-    # We also add/update the model to relevant collection and fire specific events
-    # we can hook into via our views and controllers.
+    # Point here is to create specific events we can bind to with our views/controllers.
+    # 'Created' and 'updated' are more explicit than 'sync.'
+    # We also add/update the model to the relevant collection right away
+    # and fire specific events we can hook into.
     saveSuccess: (isNew, collection) =>
-      if isNew ## model is being created
+      if isNew  ## model is being created
         collection.add @ if collection
         collection.trigger "model:created", @ if collection
         @trigger "created", @
-      else ## model is being updated
-        # if model has collection property defined, use that if no collection option exists.
+      else      ## model is being updated
         collection ?= @collection
         collection.trigger "model:updated", @ if collection
         @trigger "updated", @
 
+    # set errors directly on the model unless status returned was 500 or 404.
+    # $.parseJSON turns json into a valid JS object.
+    # Errors are stored in xhr object's errors property.
     saveError: (model, xhr, options) =>
-      # set errors directly on the model unless status returned was 500 or 404.
-      # $.parseJSON turns json into a valid JS object.
       @set _errors: $.parseJSON(xhr.responseText)?.errors unless xhr.status is 500 or xhr.status is 404

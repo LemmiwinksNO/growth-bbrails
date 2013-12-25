@@ -3,16 +3,16 @@
   class New.Controller extends App.Controllers.Base
 
     initialize: (options) ->
-      crew = App.request "new:crew:entity"
+      member = App.request "new:crew:entity"
 
       # Custom event from our custom save method (/entities/_base/models.js).
       # Clearer and safer than just binding to backbone's sync event.
       # Once item is created, forward custom event to parent app so we
       # can redirect user to edit page.
-      @listenTo crew, "created", ->
-        App.vent.trigger "crew:created", crew
+      @listenTo member, "created", ->
+        App.vent.trigger "crew:member:created", member
 
-      newView = @getNewView crew
+      newView = @getNewView member
       formView = App.request "form:wrapper", newView
         # can put custom form configurables here or with the view
 
@@ -22,6 +22,6 @@
 
       @show formView
 
-    getNewView: (crew) ->
+    getNewView: (member) ->
       new New.Crew
-        model: crew
+        model: member

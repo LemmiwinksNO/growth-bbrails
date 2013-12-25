@@ -79,6 +79,7 @@
     getCrewView: (crew) ->
       new List.Crew
         collection: crew
+        options: "options"
 
     getLayoutView: ->
       new List.Layout

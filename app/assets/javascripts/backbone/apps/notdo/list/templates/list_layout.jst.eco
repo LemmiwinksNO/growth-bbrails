@@ -7,6 +7,12 @@
     </div>
   </section>
   <section>
-    <div id="notdo-region" class="large-12 columns"></div>
+    <div class="row">
+      <div class="large-12 columns">
+        <div id="notdoing-region"></div>
+        <div id="doing-region"></div>
+        <div id="done-region"></div>
+      </div>
+    </div>
   </section>
 </div>

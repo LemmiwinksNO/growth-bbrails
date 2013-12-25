@@ -1,5 +1,8 @@
-# Overwrite backbone's sync method so we can set _fetch property
-# on sync.
+# Purpose: Prevent page loads before entities finish fetching, which makes
+# views show incorrectly, then jump.
+#
+# Custom sync method: Call regular sync method, then set the returned
+# XHR object on the entity. (entity._fetch)
 
 do (Backbone) ->
 
@@ -13,6 +16,7 @@ do (Backbone) ->
 
     # Call backup sync whichs returns XHR object
     sync = _sync(method, entity, options)
+
     # If entity doesn't have _fetch property and method == 'read'
     # set _fetch to the XHR object.
     if !entity._fetch and method is "read"

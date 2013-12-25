@@ -1,4 +1,5 @@
 # This Form submodule inputs a view and wraps it in a form.
+# Episode 7 part 2, 10 minutes
 
 @PlanetExpress.module "Components.Form", (Form, App, Backbone, Marionette, $, _) ->
 
@@ -17,32 +18,33 @@
     formCancel: ->
       @contentView.triggerMethod "form:cancel"
 
+    # Get our form data using syphon (creates object using 'name' as key)
+    # Give our contentView a chance to prevent submitting the form, would be in
+    # its onFormSubmit method. (called automatically when triggering 'form:submit')
     formSubmit: ->
       data = Backbone.Syphon.serialize @formLayout
-      # Ask view if it is ok to update the form. triggerMethod fires
-      # form:submit event AND triggers onFormSubmit in the view if there
-      # is one.
       if @contentView.triggerMethod("form:submit", data) isnt false
         model = @contentView.model
         @processFormSubmit data, model
 
+    # Save the model using our custom backbone save method.
     processFormSubmit: (data, model) ->
-      model.save data  # Note this is our custom save method.
+      model.save data
 
+    # Called automatically when this controller closes.
     onClose: ->
       console.log "onClose", @
 
+    # Need to set region for this controller b/c it wasn't passed in.
     formContentRegion: ->
-      # Need to set region for this controller b/c it isn't passed in.
-      # This region is created by our form controller
       @region = @formLayout.formContentRegion
-      @show @contentView
+      @show @contentView # @formLayout.formContentRegion.show @contentView
 
     getFormLayout: (options = {}) ->
       # _.result grabs all key-value pairs off our view object with a key of "form"
       # Set default config, but let view override it. Then give controller last say.
       config = @getDefaultConfig _.result(@contentView, "form")
-      _.extend config, options  # options comes from requesting controller.
+      _.extend config, options  # overwrite default config with controller set options
 
       buttons = @getButtons config.buttons
 
@@ -51,21 +53,20 @@
         model: @contentView.model
         buttons: buttons
 
+    # _.defaults fills in undefined properties in the config object.
+    # i.e. if footer is set in config, it won't be overwritten here.
     getDefaultConfig: (config = {}) ->
-      # _.defaults fills in undefined properties in the config object.
-      # i.e. if footer is set in config, it won't be overwritten here.
       _.defaults config,
-        footer: true  # show footer
-        focusFirstInput: true
-        errors: true  # show errors
-        syncing: true # allow custom sync event stuff (sync:start, sync:stop)
+        footer: true   # show footer
+        focusFirstInput: true  # focus first input
+        errors: true   # show errors
+        syncing: true  # allow custom sync event stuff (sync:start, sync:stop)
 
     # Get buttons collection unless buttons is set to false in view.
     getButtons: (buttons = {}) ->
       App.request("form:button:entities", buttons, @contentView.model) unless buttons is false
 
   App.reqres.setHandler "form:wrapper", (contentView, options = {}) ->
-    # Make sure contentview has a model.
     throw new Error "No model found inside of form's contentView" unless contentView.model
 
     formController = new Form.Controller

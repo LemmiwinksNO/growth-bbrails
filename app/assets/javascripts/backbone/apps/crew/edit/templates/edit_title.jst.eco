@@ -20,7 +20,7 @@
           <a href="#">Crew</a>
         </li>
         <li>
-          <a href="#">Fry</a>
+          <a href="#"><%= @name %></a>
         </li>
       </ul>
     </div>

@@ -11,7 +11,7 @@
   class List.Controller extends App.Controllers.Base
 
     # (1) Instantiate notdo_collection and fetch <br>
-    # (2) Wait until notdo_collection is fetched <br>
+    # (2) When notdo_collection is fetched, run callback <br>
     # (3) Get layout view <br>
     # (4) Wait until @layout's show event is fired before showing its regions <br>
     # (5) Show @layout in mainRegion and listen to its close event so we
@@ -26,9 +26,14 @@
         @layout = @getLayoutView()
 
         @listenTo @layout, "show", =>
-          @titleRegion()                  # or @showTitle?
-          @panelRegion()                  # or @showPanel?
-          @notdoRegion notdo_collection   # or @listNotdo?
+          @titleRegion()
+          @panelRegion()
+          # @notdoRegion notdo_collection   # or @listNotdo?
+
+          # Add notdo columns, passing in filtered collections.
+          @listNotdo notdo_collection.notDoingCollection(), "Not Doing", "not-doing"
+          @listNotdo notdo_collection.doingCollection(), "Doing", "doing"
+          @listNotdo notdo_collection.doneCollection(), "Done", "done"
 
         @show @layout
 
@@ -58,21 +63,62 @@
     #     the model after user confirms. <br>
     #       args -> view instance, model, collection <br>
     # (4) Show notdo_view in @layout.notdoRegion
-    notdoRegion: (notdo_collection) ->
-      notdo_view = @getNotdoView notdo_collection
+    # TODO: DRY this.
+    # notdoRegion: (notdo_collection) ->
+    #   # Get views
+    #   not_doing_view = @getNotdoListView notdo_collection, "Not Doing", "not-doing"
+    #   doing_view = @getNotdoListView notdo_collection, "Doing", "doing"
+    #   done_view = @getNotdoListView notdo_collection, "Done", "done"
 
-      @listenTo notdo_view, "childview:notdo:item:clicked", (child, args) ->
+    #   # Setup item click listeners
+    #   @listenTo not_doing_view, "childview:notdo:item:clicked", (child, args) ->
+    #     App.vent.trigger "notdo:item:clicked", args.model
+    #   @listenTo doing_view, "childview:notdo:item:clicked", (child, args) ->
+    #     App.vent.trigger "notdo:item:clicked", args.model
+    #   @listenTo done_view, "childview:notdo:item:clicked", (child, args) ->
+    #     App.vent.trigger "notdo:item:clicked", args.model
+
+    #   # Setup item click delete listeners
+    #   @listenTo not_doing_view, "childview:notdo:delete:click", (child, args) ->
+    #     model = args.model
+    #     if confirm "Are you sure you want to delete #{model.get("name")}?" then model.destroy() else false
+    #   @listenTo doing_view, "childview:notdo:delete:click", (child, args) ->
+    #     model = args.model
+    #     if confirm "Are you sure you want to delete #{model.get("name")}?" then model.destroy() else false
+    #   @listenTo done_view, "childview:notdo:delete:click", (child, args) ->
+    #     model = args.model
+    #     if confirm "Are you sure you want to delete #{model.get("name")}?" then model.destroy() else false
+
+    #   # Show views
+    #   @layout.notDoingRegion.show not_doing_view
+    #   @layout.doingRegion.show doing_view
+    #   @layout.doneRegion.show done_view
+
+    # DRY version of notdoRegion
+    # TODO: TEST serializeData -> might be able to send that data to the
+    # compositeView template rather than a backbone model.
+    listNotdo: (notdo_collection, title, status) ->
+
+      #Get view
+      view = @getNotdoListView notdo_collection, title, status
+
+      # Setup item click and item click delete listeners
+      @listenTo view, "childview:notdo:item:clicked", (child, args) ->
         App.vent.trigger "notdo:item:clicked", args.model
-
-      @listenTo notdo_view, "childview:notdo:delete:click", (child, args) ->
+      @listenTo view, "childview:notdo:delete:clicked", (child, args) ->
         model = args.model
         if confirm "Are you sure you want to delete #{model.get("name")}?" then model.destroy() else false
 
-      @layout.notdoRegion.show notdo_view
+      # Show view in correct region based on status.
+      if status == 'not-doing' then @layout.notDoingRegion.show view
+      else if status == 'doing' then @layout.doingRegion.show view
+      else if status == 'done' then @layout.doneRegion.show view
 
-    getNotdoView: (notdo_collection) ->
-      new List.Notdo
+    getNotdoListView: (notdo_collection, title, status) ->
+      new List.NotdoList
         collection: notdo_collection
+        title: title
+        status: status
 
     getLayoutView: ->
       new List.Layout

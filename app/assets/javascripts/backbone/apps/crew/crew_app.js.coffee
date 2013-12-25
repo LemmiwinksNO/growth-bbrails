@@ -35,7 +35,7 @@
     API.edit member.id, member
 
   # When crew member is cancelled or updated, go back to list page and update URL.
-  App.vent.on "crew:cancelled crew:updated", (crew) ->
+  App.vent.on "crew:member:cancelled crew:member:updated", (crew) ->
     App.navigate Routes.crew_index_path()
     API.list()
 
