@@ -10,14 +10,14 @@
       # Once item is created, forward custom event to parent app so we
       # can redirect user to edit page.
       @listenTo notdo, "created", ->
-        App.vent.trigger "notdo:created", notdo
+        App.vent.trigger "notdo:item:created", notdo
 
       newView = @getNewView notdo
       formView = App.request "form:wrapper", newView
         # can put custom form configurables here or with the view
 
       # Once form is closed, close the region.
-      @listenTo newView, "form:cancel", =>
+      @listenTo newView, "form:cancel", =>  # Should we be listening to formView?
         @region.close()  # @region attached via App.Controllers.Base
 
       @show formView

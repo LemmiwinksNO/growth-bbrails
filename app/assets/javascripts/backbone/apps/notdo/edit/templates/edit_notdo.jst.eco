@@ -1,0 +1,62 @@
+<div id="edit-crew">
+  <fieldset>
+    <legend>Details</legend>
+    <div class="row">
+      <div class="large-2 columns">
+        <label class="right inline">Title</label>
+      </div>
+      <div class="large-10 columns">
+        <div class="large-5">
+          <input type="text" name="title" class="large-2" value="<%= @title %>" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-2 columns">
+        <label class="right inline">Project</label>
+      </div>
+      <div class="large-10 columns">
+        <div class="large-5">
+          <input type="text" name="project" class="large-2" value="<%= @project %>" />
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-2 columns">
+        <label class="right inline">Status</label>
+      </div>
+      <div class="large-10 columns">
+        <div class="large-5">
+          <input type="text" name="status" class="large-2" value="<%= @status %>" />
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-2 columns">
+        <label class="right inline">Status</label>
+      </div>
+      <div class="large-10 columns">
+        <div class="large-3">
+          <select name="status" class="medium">
+            <option value="backlog">Backlog</option>
+            <option value="not-doing">Not Doing</option>
+            <option value="doing">Doing</option>
+            <option value="done">Done</option>
+            <option value="finished">Finished</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+  <fieldset>
+    <legend>Description</legend>
+    <div class="row">
+      <div class="large-12 columns left">
+        <textarea name="description" class="large-12"><%= @description %></textarea>
+      </div>
+    </div>
+  </fieldset>
+</div>
+

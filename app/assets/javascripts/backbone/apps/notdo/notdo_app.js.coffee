@@ -20,23 +20,23 @@
     # 2 entry points to edit page:
     # (1) User clicks notdo item in list page (we have the item)
     # (2) User points url to the route (we have item.id)
-    edit: (id, member) ->
+    edit: (id, item) ->
       new NotdoApp.Edit.Controller
         id: id
-        member: member
+        item: item
 
   # When user clicks add, setup New module.
   App.commands.setHandler "new:notdo:item", (region) ->
     API.newNotdo region
 
   # When notdo item is clicked or created, redirect to edit page and update URL.
-  App.vent.on "notdo:item:clicked notdo:created", (item) ->
+  App.vent.on "notdo:item:clicked notdo:item:created", (item) ->
     # Same as Backbone.history.navigate "notdo/#{item.id}/edit"
     App.navigate Routes.edit_notdo_path(item.id)
     API.edit item.id, item
 
   # When notdo item is cancelled or updated, go back to list page and update URL.
-  App.vent.on "notdo:cancelled notdo:updated", (notdo) ->
+  App.vent.on "notdo:item:cancelled notdo:item:updated", (notdo) ->
     App.navigate Routes.notdo_index_path()
     API.list()
 

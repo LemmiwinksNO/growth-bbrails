@@ -4,8 +4,8 @@
     <div class="row">
       <div class="large-3 columns">
         <label class="right inline">Age</label>
-          </div>
-          <div class="large-9 columns">
+      </div>
+      <div class="large-9 columns">
         <div class="large-5">
           <input type="text" name="age" class="large-2" value="<%= @age %>" />
         </div>
@@ -14,8 +14,8 @@
     <div class="row">
       <div class="large-3 columns">
         <label class="right inline">Name</label>
-          </div>
-          <div class="large-9 columns">
+      </div>
+      <div class="large-9 columns">
         <div class="large-5">
           <input type="text" name="name" value="<%= @name %>" />
         </div>
@@ -24,8 +24,8 @@
     <div class="row">
       <div class="large-3 columns">
         <label class="right inline">Avatar</label>
-          </div>
-          <div class="large-9 columns">
+      </div>
+      <div class="large-9 columns">
         <div class="large-5">
           <input type="text" name="avatar"value="<%= @avatar %>" />
         </div>
@@ -34,8 +34,8 @@
     <div class="row">
       <div class="large-3 columns">
         <label class="right inline">Title</label>
-          </div>
-          <div class="large-9 columns">
+      </div>
+      <div class="large-9 columns">
         <div class="large-5 left">
           <input type="text" name="title" value="<%= @title %>" />
         </div>
@@ -47,7 +47,7 @@
     <div class="row">
       <div class="large-3 columns">
         <label class="right inline">Species</label>
-          </div>
+      </div>
       <div class="large-9 columns">
         <div class="large-5 left">
           <input type="text" name="species" value="<%= @species %>" />
