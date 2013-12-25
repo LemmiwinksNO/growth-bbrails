@@ -1,1 +1,1 @@
-attributes :title, :project, :status, :description
+attributes :id, :title, :project, :status, :description

@@ -28,7 +28,6 @@
         @listenTo @layout, "show", =>
           @titleRegion()
           @panelRegion()
-          # @notdoRegion notdo_collection   # or @listNotdo?
 
           # Add notdo columns, passing in filtered collections.
           @listNotdo notdo_collection.notDoingCollection(), "Not Doing", "not-doing"
@@ -57,59 +56,23 @@
     newRegion: ->
       App.execute "new:notdo:item", @layout.newRegion
 
-    # (1) Get notdo_view <br>
+    # (1) Get view <br>
     # (2) Listen for user clicking a notdo item and redirect to edit page. <br>
     # (3) Listen for user clicking delete button on a notdo item and delete
     #     the model after user confirms. <br>
     #       args -> view instance, model, collection <br>
-    # (4) Show notdo_view in @layout.notdoRegion
-    # TODO: DRY this.
-    # notdoRegion: (notdo_collection) ->
-    #   # Get views
-    #   not_doing_view = @getNotdoListView notdo_collection, "Not Doing", "not-doing"
-    #   doing_view = @getNotdoListView notdo_collection, "Doing", "doing"
-    #   done_view = @getNotdoListView notdo_collection, "Done", "done"
-
-    #   # Setup item click listeners
-    #   @listenTo not_doing_view, "childview:notdo:item:clicked", (child, args) ->
-    #     App.vent.trigger "notdo:item:clicked", args.model
-    #   @listenTo doing_view, "childview:notdo:item:clicked", (child, args) ->
-    #     App.vent.trigger "notdo:item:clicked", args.model
-    #   @listenTo done_view, "childview:notdo:item:clicked", (child, args) ->
-    #     App.vent.trigger "notdo:item:clicked", args.model
-
-    #   # Setup item click delete listeners
-    #   @listenTo not_doing_view, "childview:notdo:delete:click", (child, args) ->
-    #     model = args.model
-    #     if confirm "Are you sure you want to delete #{model.get("name")}?" then model.destroy() else false
-    #   @listenTo doing_view, "childview:notdo:delete:click", (child, args) ->
-    #     model = args.model
-    #     if confirm "Are you sure you want to delete #{model.get("name")}?" then model.destroy() else false
-    #   @listenTo done_view, "childview:notdo:delete:click", (child, args) ->
-    #     model = args.model
-    #     if confirm "Are you sure you want to delete #{model.get("name")}?" then model.destroy() else false
-
-    #   # Show views
-    #   @layout.notDoingRegion.show not_doing_view
-    #   @layout.doingRegion.show doing_view
-    #   @layout.doneRegion.show done_view
-
-    # DRY version of notdoRegion
-    # TODO: TEST serializeData -> might be able to send that data to the
-    # compositeView template rather than a backbone model.
+    # (4) Show this view in correct region based on status
     listNotdo: (notdo_collection, title, status) ->
-
-      #Get view
       view = @getNotdoListView notdo_collection, title, status
 
-      # Setup item click and item click delete listeners
       @listenTo view, "childview:notdo:item:clicked", (child, args) ->
         App.vent.trigger "notdo:item:clicked", args.model
+
       @listenTo view, "childview:notdo:delete:clicked", (child, args) ->
         model = args.model
-        if confirm "Are you sure you want to delete #{model.get("name")}?" then model.destroy() else false
+        args.model.set("title", "something else");
+        if confirm "Are you sure you want to delete #{model.get("title")}?" then model.destroy()
 
-      # Show view in correct region based on status.
       if status == 'not-doing' then @layout.notDoingRegion.show view
       else if status == 'doing' then @layout.doingRegion.show view
       else if status == 'done' then @layout.doneRegion.show view

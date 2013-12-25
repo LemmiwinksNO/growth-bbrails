@@ -67,6 +67,7 @@
       # When user clicks a crew member, go to edit page.
       @listenTo crewView, "childview:crew:member:clicked", (child, args) ->
         # Use vent when the current module doesn't need anything returned.
+        console.info "clicked controller, trigger crew:member:clicked"
         App.vent.trigger "crew:member:clicked", args.model
 
       # args -> view instance, model, collection

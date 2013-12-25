@@ -4,6 +4,16 @@
     # Need this when fetching a single Model
     urlRoot: -> Routes.notdo_index_path()
 
+    # idAttribute: "guid"
+
+    # defaults: {
+    #   id: '',
+    #   title: '',
+    #   description: '',
+    #   status: '',
+    #   project: ''
+    # }
+
   class Entities.NotdoCollection extends App.Entities.Collection
     model: Entities.Notdo
 
@@ -13,18 +23,18 @@
     comparator: (notdo) -> notdo.get "status"
 
     # Filter methods
-    backlog: ->   @.filter (notdo) -> notdo.get('status') == 'backlog'
-    notDoing: ->  @.filter (notdo) -> notdo.get('status') == 'not-doing'
-    doing: ->     @.filter (notdo) -> notdo.get('status') == 'doing'
-    done: ->      @.filter (notdo) -> notdo.get('status') == 'done'
-    finished: ->  @.filter (notdo) -> notdo.get('status') == 'finished'
+    backlog: ->   @filter (notdo) -> notdo.get('status') == 'backlog'
+    notDoing: ->  @filter (notdo) -> notdo.get('status') == 'not-doing'
+    doing: ->     @filter (notdo) -> notdo.get('status') == 'doing'
+    done: ->      @filter (notdo) -> notdo.get('status') == 'done'
+    finished: ->  @filter (notdo) -> notdo.get('status') == 'finished'
 
     # Wrap filter results in a collection
-    backlogCollection: ->   new Entities.NotdoCollection @.backlog()
-    notDoingCollection: ->  new Entities.NotdoCollection @.notDoing()
-    doingCollection: ->     new Entities.NotdoCollection @.doing()
-    doneCollection: ->      new Entities.NotdoCollection @.done()
-    finishedCollection: ->  new Entities.NotdoCollection @.finished()
+    backlogCollection: ->   new Entities.NotdoCollection @backlog()
+    notDoingCollection: ->  new Entities.NotdoCollection @notDoing()
+    doingCollection: ->     new Entities.NotdoCollection @doing()
+    doneCollection: ->      new Entities.NotdoCollection @done()
+    finishedCollection: ->  new Entities.NotdoCollection @finished()
 
   API =
 

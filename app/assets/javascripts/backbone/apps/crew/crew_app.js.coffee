@@ -30,7 +30,7 @@
     API.newCrew region
 
   # When crew member is clicked or created, redirect to edit page and update URL.
-  App.vent.on "crew:member:clicked crew:created", (member) ->
+  App.vent.on "crew:member:clicked crew:member:created", (member) ->
     App.navigate Routes.edit_crew_path(member.id)
     API.edit member.id, member
 

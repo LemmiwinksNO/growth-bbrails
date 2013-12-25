@@ -9,7 +9,13 @@
       <div class="title ellipsis"><%= @title %></div>
       <div class="description ellipsis"><%= @description %></div>
     </div>
-    <div class="progress success"><span class="meter" style="width:100%"></span></div>
+      <div class="progress success"><span class="meter" style="width:100%"></span></div>
+    </div>
+  <div class="large-1 columns">
+    <div class="notdo-delete">
+      <button class="secondary tiny radius">
+        <i class="fi-x"></i>
+      </button>
+    </div>
   </div>
-  <div class="large-offset-1"></div>
 </div>
