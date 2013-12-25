@@ -4,16 +4,6 @@
     # Need this when fetching a single Model
     urlRoot: -> Routes.notdo_index_path()
 
-    # idAttribute: "guid"
-
-    # defaults: {
-    #   id: '',
-    #   title: '',
-    #   description: '',
-    #   status: '',
-    #   project: ''
-    # }
-
   class Entities.NotdoCollection extends App.Entities.Collection
     model: Entities.Notdo
 

@@ -14,7 +14,6 @@
       doingRegion:    "#doing-region"
       doneRegion:     "#done-region"
 
-
   class List.Title extends App.Views.ItemView
     template: "notdo/list/_title"
 

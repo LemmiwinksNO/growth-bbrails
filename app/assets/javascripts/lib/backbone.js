@@ -516,7 +516,6 @@
       };
 
       if (this.isNew()) {
-        console.log("destroy method isNew == true");
         options.success();
         return false;
       }

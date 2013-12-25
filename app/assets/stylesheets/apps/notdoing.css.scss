@@ -1,7 +1,7 @@
 .box {
   // @include panel;
   @include border-radius(3px);
-  background: $gray;
+  background: $secondary-color;
   // padding: 1.25em;
   margin-bottom: 1.25em;
   border-top: 1px solid #d9d9d9;
@@ -16,7 +16,7 @@
   .box-header {
     @include border-top-left-radius(3px);
     @include border-top-right-radius(3px);
-    background-color: darken($gray, 5%);
+    background-color: darken($secondary-color, 5%);
     border-bottom: 1px solid #cdcdcd;
     padding: .5em;
   }
@@ -51,14 +51,13 @@
       padding-top: 5px;
 
       .notdo-delete {
-        button {
-          right: 24px;
-          display: none;
-        }
+        padding-right: 5px;
+
+        button { display: none; }
       }
 
       &:hover {
-        background-color: darken($gray, 5%);
+        background-color: darken($secondary-color, 5%);
         .notdo-delete > button { display: block }
       }
     }

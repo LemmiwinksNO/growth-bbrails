@@ -4,18 +4,20 @@
       <i class="fi-star"></i>
     </div>
   </div>
-  <div class="large-9 columns">
+  <div class="large-10 columns">
     <div class="item-content">
-      <div class="title ellipsis"><%= @title %></div>
+      <div>
+        <span class="title ellipsis"><%= @title %></span>
+        <span class="notdo-delete right">
+          <button class="secondary tiny radius">
+            <i class="fi-x"></i>
+          </button>
+        </span>
+      </div>
       <div class="description ellipsis"><%= @description %></div>
     </div>
-      <div class="progress success"><span class="meter" style="width:100%"></span></div>
-    </div>
-  <div class="large-1 columns">
-    <div class="notdo-delete">
-      <button class="secondary tiny radius">
-        <i class="fi-x"></i>
-      </button>
+    <div class="large-10">
+      <div class="progress success"><span class="meter" style="width:1%"></span></div>
     </div>
   </div>
 </div>
