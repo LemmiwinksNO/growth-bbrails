@@ -22,6 +22,7 @@ gem "js-routes"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'modernizr-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem "eco"
@@ -30,7 +31,8 @@ group :assets do
                                 # :github => 'anjlab/bootstrap-rails'
   # gem "font-awesome-sass-rails"
   # gem "bootstrap-sass-rails"
-  gem "zurb-foundation"
+  # gem "zurb-foundation"  # Foundation 4.0
+  gem 'foundation-rails'   # Foundation 5.0
   gem "foundation-icons-sass-rails"
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -40,5 +42,5 @@ group :assets do
 end
 
 group :development, :test do
-	gem 'rails-dev-tweaks'
+  gem 'rails-dev-tweaks'
 end

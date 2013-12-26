@@ -26,17 +26,6 @@
         <label class="right inline">Status</label>
       </div>
       <div class="large-10 columns">
-        <div class="large-5">
-          <input type="text" name="status" class="large-2" value="<%= @status %>" />
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="large-2 columns">
-        <label class="right inline">Status</label>
-      </div>
-      <div class="large-10 columns">
         <div class="large-3">
           <select name="status" class="medium">
             <option value="backlog">Backlog</option>
@@ -48,7 +37,6 @@
         </div>
       </div>
     </div>
-
   </fieldset>
   <fieldset>
     <legend>Description</legend>

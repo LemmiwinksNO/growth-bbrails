@@ -1,4 +1,6 @@
 #header-region		{
-		#logo					{  width: 30px; height: 30px; display: inline-block; position: relative; top: 5px;  }
+		#logo					{  width: 30px; height: 30px; display: inline-block; position: relative;  }
 		a							{  height: 45px;  }
+    .top-bar      {  background: #111;  }
+    li > a        {  background: #111; &:hover { background: lighten(#111, 10%); } }
 }

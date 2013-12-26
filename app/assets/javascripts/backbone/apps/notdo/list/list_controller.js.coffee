@@ -30,9 +30,9 @@
           @panelRegion()
 
           # Add notdo columns, passing in filtered collections.
-          @listNotdo notdo_collection.notDoingCollection(), "Not Doing", "not-doing"
-          @listNotdo notdo_collection.doingCollection(), "Doing", "doing"
-          @listNotdo notdo_collection.doneCollection(), "Done", "done"
+          @notdoRegion notdo_collection.notDoingCollection(), "Not Doing", "not-doing"
+          @notdoRegion notdo_collection.doingCollection(), "Doing", "doing"
+          @notdoRegion notdo_collection.doneCollection(), "Done", "done"
 
         @show @layout
 
@@ -62,7 +62,7 @@
     #     the model after user confirms. <br>
     #       args -> view instance, model, collection <br>
     # (4) Show this view in correct region based on status
-    listNotdo: (notdo_collection, title, status) ->
+    notdoRegion: (notdo_collection, title, status) ->
       view = @getNotdoListView notdo_collection, title, status
 
       @listenTo view, "childview:notdo:item:clicked", (child, args) ->

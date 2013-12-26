@@ -9,7 +9,7 @@
       <div>
         <span class="title ellipsis"><%= @title %></span>
         <span class="notdo-delete right">
-          <button class="secondary tiny radius">
+          <button class="secondary extra-tiny radius">
             <i class="fi-x"></i>
           </button>
         </span>

@@ -23,28 +23,28 @@
             </a>
           </li>
           <li class="divider"></li>
-          <li class="active">
+          <li>
             <a href="#">
               <i class="social foundicon-torso"></i>
               Backlog
             </a>
           </li>
           <li class="divider"></li>
-          <li class="active">
+          <li>
             <a href="#">
               <i class="social foundicon-torso"></i>
               Logger
             </a>
           </li>
           <li class="divider"></li>
-          <li class="active">
+          <li>
             <a href="#">
               <i class="social foundicon-torso"></i>
               Daily
             </a>
           </li>
           <li class="divider"></li>
-          <li class="active">
+          <li>
             <a href="#">
               <i class="social foundicon-torso"></i>
               Blog
