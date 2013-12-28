@@ -12,7 +12,7 @@
   </div>
 </div>
 <ul class="breadcrumbs">
-  <li><a href="#">Home</a></li>
+  <li><a href="/">Home</a></li>
   <li class="current"><a href="#">Notdoing</a></li>
   <li class="unavailable"><a href="#">Item</a></li>
 </ul>

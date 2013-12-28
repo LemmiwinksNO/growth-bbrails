@@ -27,18 +27,16 @@
 
     titleRegion: (item) ->
       titleView = @getTitleView item
-      console.log "titleView", titleView.el
       @layout.titleRegion.show titleView
 
     formRegion: (item) ->
       editView = @getEditView item
-      console.log "editView", editView.el
 
       @listenTo editView, "form:cancel", ->
         App.vent.trigger "notdo:item:cancelled", item
 
       # Wrap editView in a form
-      formView = App.request "form:wrapper", editView,
+      formView = App.request "form:wrapper", editView,  # note the comma
         footer: true  # Controller overwrites view form config
         # Add form config here (or in view)
 

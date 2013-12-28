@@ -18,10 +18,16 @@
   class Edit.Notdo extends App.Views.ItemView
     template: "notdo/edit/edit_notdo"
 
-    # Set the status dropdown
+    # Set the status for dropdown
+    # Start jQuery text editor
     onRender: ->
       status = @model.get('status')
       this.$el.find("option[value=" + status + "]").prop('selected', true)
+
+      this.$el.find(".jqte").jqte
+        sub:    false
+        sup:    false
+        format: false
 
     # This gets fired when controller triggers form:submit event.
     # We use this to prevent the form from updating.

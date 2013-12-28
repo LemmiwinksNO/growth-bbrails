@@ -4,7 +4,7 @@
       <ul class="title-area">
         <li class="name">
           <h1>
-            <a href="#">
+            <a href="/">
               <span id="logo">
                 <img src="assets/ship.png" />
               </span>
@@ -17,36 +17,36 @@
         <ul class="right">
           <li class="divider"></li>
               <li>
-            <a href="#">
-              <i class="general foundicon-graph"></i>
+            <a href="/#notdo">
+              <i class="fi-list"></i>
               Not Doing List
             </a>
           </li>
           <li class="divider"></li>
           <li>
-            <a href="#">
-              <i class="social foundicon-torso"></i>
+            <a href="/#backlog">
+              <i class="fi-mountains"></i>
               Backlog
             </a>
           </li>
           <li class="divider"></li>
           <li>
-            <a href="#">
-              <i class="social foundicon-torso"></i>
+            <a href="/#logger">
+              <i class="fi-torso"></i>
               Logger
             </a>
           </li>
           <li class="divider"></li>
           <li>
-            <a href="#">
-              <i class="social foundicon-torso"></i>
+            <a href="/#daily">
+              <i class="fi-lightbulb"></i>
               Daily
             </a>
           </li>
           <li class="divider"></li>
           <li>
-            <a href="#">
-              <i class="social foundicon-torso"></i>
+            <a href="/#blog">
+              <i class="fi-book"></i>
               Blog
             </a>
           </li>

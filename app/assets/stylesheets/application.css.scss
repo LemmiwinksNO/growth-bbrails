@@ -20,9 +20,10 @@
 
 @import "foundation";
 
-@import "foundation_and_overrides";
-
 @import "foundation-icons";
+
+@import "vendor/foundation_and_overrides";
+@import "vendor/jquery-te-1.4.0";  // WYSIWYG editor
 
 @import "utils/_vars";
 
@@ -30,6 +31,7 @@
 @import "comps/_forms";
 @import "comps/_breadcrumbs";
 @import "comps/_images";
+@import "comps/_jqte";
 
 @import "apps/header";
 @import "apps/footer";

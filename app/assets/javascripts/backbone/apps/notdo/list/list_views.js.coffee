@@ -26,7 +26,7 @@
   class List.NotdoItem extends App.Views.ItemView
     template: "notdo/list/_notdo_item"
     tagName: "li"
-    className: "item"
+    className: -> "item " + @model.get 'status'
 
     triggers:
       "click"               : "notdo:item:clicked"
