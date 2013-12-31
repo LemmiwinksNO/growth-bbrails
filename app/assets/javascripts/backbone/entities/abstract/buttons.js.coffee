@@ -20,12 +20,12 @@
       array = []
       array.push {
         type: "cancel",
-        className: "button small secondary radius",
+        className: "button tiny secondary radius",
         text: buttons.cancel
       } unless buttons.cancel is false
       array.push {
         type: "primary",
-        className: "button small radius",
+        className: "button tiny radius",
         text: buttons.primary
         buttonType: "submit"
       } unless buttons.primary is false

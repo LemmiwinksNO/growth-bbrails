@@ -10,8 +10,8 @@
 
   class List.Controller extends App.Controllers.Base
 
-    # (1) Instantiate notdo_collection and fetch <br>
-    # (2) When notdo_collection is fetched, run callback <br>
+    # (1) Instantiate notdos collection and fetch <br>
+    # (2) When notdos collection is fetched, run callback <br>
     # (3) Get layout view <br>
     # (4) Wait until @layout's show event is fired before showing its regions <br>
     # (5) Show @layout in mainRegion and listen to its close event so we
@@ -19,9 +19,9 @@
     #       @listenTo @layout, "close", @close.
     #       App.mainRegion.show @layout
     initialize: ->
-      notdo_collection = App.request "notdo:entities"
+      notdos = App.request "notdo:entities"
 
-      App.execute "when:fetched", notdo_collection, =>
+      App.execute "when:fetched", notdos, =>
 
         @layout = @getLayoutView()
 
@@ -29,10 +29,15 @@
           @titleRegion()
           @panelRegion()
 
+          # Set filtered collections
+          not_doing_collection = notdos.filterByStatusCollection("not-doing");
+          doing_collection = notdos.filterByStatusCollection("doing")
+          done_collection = notdos.filterByStatusCollection("done")
+
           # Add notdo columns, passing in filtered collections.
-          @notdoRegion notdo_collection.notDoingCollection(), "Not Doing", "not-doing"
-          @notdoRegion notdo_collection.doingCollection(), "Doing", "doing"
-          @notdoRegion notdo_collection.doneCollection(), "Done", "done"
+          @notdoRegion not_doing_collection, "Not Doing", "not-doing"
+          @notdoRegion doing_collection, "Doing", "doing"
+          @notdoRegion done_collection, "Done", "done"
 
         @show @layout
 
@@ -62,8 +67,8 @@
     #     the model after user confirms. <br>
     #       args -> view instance, model, collection <br>
     # (4) Show this view in correct region based on status
-    notdoRegion: (notdo_collection, title, status) ->
-      view = @getNotdoListView notdo_collection, title, status
+    notdoRegion: (collection, title, status) ->
+      view = @getNotdoListView collection, title, status
 
       @listenTo view, "childview:notdo:item:clicked", (child, args) ->
         App.vent.trigger "notdo:item:clicked", args.model
@@ -77,9 +82,9 @@
       else if status == 'doing' then @layout.doingRegion.show view
       else if status == 'done' then @layout.doneRegion.show view
 
-    getNotdoListView: (notdo_collection, title, status) ->
+    getNotdoListView: (collection, title, status) ->
       new List.NotdoList
-        collection: notdo_collection
+        collection: collection
         title: title
         status: status
 

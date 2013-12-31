@@ -28,13 +28,16 @@
     border: 1px solid #60a1ca;
     border-radius: 50%;
     display: inline-block;
-    margin-top: 8px;
-    margin-left: 13px;
-    width: 37px;
+    // margin-top: 8px;
+    // margin-left: 13px;
+    // width: 37px;
+    margin-bottom: 3px;
+    margin-left: 3px;
+    width: 25px;
     text-align: center;
 
     i {
-      line-height: 36px;
+      // line-height: 36px;
       color: white;
     }
   }
@@ -47,18 +50,22 @@
       border-bottom: 1px solid #cdcdcd;
       @include box-sizing(border-box);
       cursor: pointer;
-      min-height: 60px;
-      padding-top: 5px;
+      // min-height: 60px;
+      min-height: 34px;
+      padding-top: 3px;
 
       .notdo-delete {
-        padding-right: 5px;
+        padding-right: 3px;
 
-        button { display: none; }
+        button {
+          display: none;
+          margin: 0;
+        }
       }
 
       &:hover {
         background-color: darken($secondary-color, 5%);
-        .notdo-delete > button { display: block }
+        .notdo-delete > button { display: inline-block }
       }
     }
   }

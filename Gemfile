@@ -25,15 +25,17 @@ group :assets do
   gem 'modernizr-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+    gem 'coffee-script-source', '~> 1.5.0'  # 1.6 doesn't include line numbers in exceptions
   gem "eco"
   gem "compass-rails"
+  gem 'foundation-rails'   # Foundation 5.0
+  gem "foundation-icons-sass-rails"
+
   # gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                                 # :github => 'anjlab/bootstrap-rails'
   # gem "font-awesome-sass-rails"
   # gem "bootstrap-sass-rails"
   # gem "zurb-foundation"  # Foundation 4.0
-  gem 'foundation-rails'   # Foundation 5.0
-  gem "foundation-icons-sass-rails"
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
