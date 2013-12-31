@@ -13,16 +13,13 @@
     comparator: (notdo) -> notdo.get "status"
 
     # Filter methods
-    filterByStatus: (status) -> @filter (notdo) -> notdo.get('status') == status
+    filterByStatus: (status) ->
+      @filter (notdo) -> notdo.get('status') == status
+    # backlog: ->   @filter (notdo) -> notdo.get('status') == 'backlog'
 
     # Wrap filter results in a collection
     filterByStatusCollection: (status) ->
       new Entities.NotdoCollection @filterByStatus(status)
-
-    # # Filter methods
-    # backlog: ->   @filter (notdo) -> notdo.get('status') == 'backlog'
-
-    # # Wrap filter results in a collection
     # backlogCollection: ->   new Entities.NotdoCollection @backlog()
 
   API =
