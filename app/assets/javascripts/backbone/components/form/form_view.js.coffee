@@ -18,6 +18,7 @@
     triggers:
       "submit"                            : "form:submit"
       "click [data-form-button='cancel']" : "form:cancel"
+      "click [data-form-button='remove']" : "form:remove"
 
     modelEvents:
       "change:_errors"  : "changeErrors"  # Set via custom save method

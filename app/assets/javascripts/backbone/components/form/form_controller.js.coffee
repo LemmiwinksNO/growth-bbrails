@@ -13,6 +13,18 @@
       @listenTo @formLayout, "show", @formContentRegion
       @listenTo @formLayout, "form:submit", @formSubmit
       @listenTo @formLayout, "form:cancel", @formCancel
+      @listenTo @formLayout, "form:remove", @formRemove
+
+    # Delete the model and return to root page
+    # i.e. if /#notdo/25/edit -> /#notdo
+    formRemove: ->
+      model = @contentView.model
+      if confirm "Are you sure you want to delete #{model.get("title")}?" then model.destroy()
+
+      frag = Backbone.history.fragment
+      route = frag.match(/[a-z]*/)[0] || "/"
+      Backbone.history.navigate(route, { trigger: true })
+      # window.history.back()  # This is another option
 
     # Form cancel is use case specific, so we forward it to @contentView
     formCancel: ->

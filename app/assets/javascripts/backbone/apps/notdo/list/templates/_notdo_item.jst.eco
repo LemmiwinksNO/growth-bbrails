@@ -4,7 +4,7 @@
 <span class="title ellipsis"><%= @title %></span>
 <span class="notdo-delete right">
   <button class="secondary extra-tiny radius">
-    <i class="fi-x"></i>
+    <i class="fi-trash"></i>
   </button>
 </span>
 <span class="priority right <%= @priority %>"><%= @priority %></span>

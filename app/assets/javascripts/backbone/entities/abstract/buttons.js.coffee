@@ -24,6 +24,11 @@
         text: buttons.cancel
       } unless buttons.cancel is false
       array.push {
+        type: "remove",
+        className: "button tiny alert radius",
+        text: buttons.remove
+      } unless buttons.remove is false
+      array.push {
         type: "primary",
         className: "button tiny radius",
         text: buttons.primary
@@ -40,6 +45,7 @@
       _.defaults buttons,
         primary: if model.isNew() then "Create" else "Update"
         cancel: "Cancel"
+        remove: if model.isNew() then false else "Remove"
         placement: "right"
 
   App.reqres.setHandler "form:button:entities", (buttons = {}, model) ->
