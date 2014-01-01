@@ -67,7 +67,9 @@
         padding-right: 4px;
         margin-right: 4px;
         margin-top: 4px;
+        margin-bottom: 4px;
         @include border-radius(2px, 2px);
+        text-transform: uppercase;
 
         &.high {  background-color: #cc1515;  }
         &.medium {  background-color: #e07a20;  }
