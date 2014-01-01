@@ -13,7 +13,7 @@
     footerRegion: "#footer-region"
 
   # App's root route -> currently /crew
-  App.rootRoute = Routes.crew_index_path()
+  App.rootRoute = Routes.notdo_index_path()
 
   App.addInitializer ->
     App.module("HeaderApp").start()

@@ -1,5 +1,5 @@
 class Notdo < ActiveRecord::Base
-  attr_accessible :description, :project, :status, :title
+  attr_accessible :title, :status, :project, :priority; :notes
 
   # Always validate :title
   validates_presence_of :title

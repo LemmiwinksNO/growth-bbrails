@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131231030834) do
+ActiveRecord::Schema.define(:version => 20131231235339) do
 
   create_table "crews", :force => true do |t|
     t.integer  "age"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20131231030834) do
     t.text     "notes"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "priority"
   end
 
   add_index "notdos", ["project"], :name => "index_notdos_on_project"

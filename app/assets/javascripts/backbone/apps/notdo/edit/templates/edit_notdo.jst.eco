@@ -42,6 +42,18 @@
             </select>
         </div>
       </div>
+      <div class="row">
+        <div class="large-2 columns">
+          <label class="right inline">Priority</label>
+        </div>
+        <div class="large-10 columns">
+            <select name="priority" class="medium">
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+        </div>
+      </div>
     </fieldset>
 
   </div>
