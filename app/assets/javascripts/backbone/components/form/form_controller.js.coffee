@@ -24,10 +24,16 @@
       frag = Backbone.history.fragment
       route = frag.match(/[a-z]*/)[0] || "/"
       Backbone.history.navigate(route, { trigger: true })
+
       # window.history.back()  # This is another option
+
+      # @contentView.triggerMethod "form:delete"  # third option
+      # @contentView.triggerMethod "form:cancel"  # fourth option
 
     # Form cancel is use case specific, so we forward it to @contentView
     formCancel: ->
+      # Note we pick this up in edit_controller, but I think you can pick it up
+      # in the view too by using onFormCancel.
       @contentView.triggerMethod "form:cancel"
 
     # Get our form data using syphon (creates object using 'name' as key)

@@ -17,6 +17,13 @@
         <ul class="right">
           <li class="divider"></li>
               <li>
+            <a href="/#crew">
+              <i class="fi-list"></i>
+              Crew
+            </a>
+          </li>
+          <li class="divider"></li>
+              <li>
             <a href="/#notdo">
               <i class="fi-list"></i>
               Not Doing List

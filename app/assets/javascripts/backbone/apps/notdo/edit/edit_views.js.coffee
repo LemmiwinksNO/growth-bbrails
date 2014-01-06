@@ -1,5 +1,5 @@
 @PlanetExpress.module "NotdoApp.Edit", (Edit, App, Backbone, Marionette, $, _) ->
-  console.log "here"
+
   class Edit.Layout extends App.Views.Layout
     template: "notdo/edit/edit_layout"
 
@@ -30,7 +30,7 @@
         format: false
 
     # This gets fired when controller triggers form:submit event.
-    # We use this to prevent the form from updating.
+    # We can use this to prevent the form from updating.
     # onFormSubmit: (data) ->
 
     # Set form configuration here

@@ -1,9 +1,9 @@
 <div id="notdo-list">
   <div id="title-region"></div>
   <section>
-    <div class="row large-12 columns">
-      <div id="panel-region"></div>
-      <div id="new-region"></div>
+    <div class="row large-12">
+      <div id="panel-region" class="large-12 columns"></div>
+      <div id="new-region" class="large-12 columns"></div>
     </div>
   </section>
   <section>

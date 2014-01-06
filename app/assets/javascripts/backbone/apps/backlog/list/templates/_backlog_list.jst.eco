@@ -1,0 +1,10 @@
+<div class="large-12 columns">
+  <div class="box">
+    <div class="box-header text-center">
+      <h2>Growth App</h2>
+    </div>
+    <div class="box-content scrollable">
+      <ul class="items not-doing"></ul>
+    </div>
+  </div> <!-- class="box" -->
+</div> <!-- class="large-12 columns" -->

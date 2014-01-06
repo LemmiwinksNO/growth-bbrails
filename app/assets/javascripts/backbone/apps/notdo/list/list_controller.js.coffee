@@ -75,7 +75,6 @@
 
       @listenTo view, "childview:notdo:delete:clicked", (child, args) ->
         model = args.model
-        args.model.set("title", "something else");
         if confirm "Are you sure you want to delete #{model.get("title")}?" then model.destroy()
 
       if status == 'not-doing' then @layout.notDoingRegion.show view
