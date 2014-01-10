@@ -1,0 +1,1 @@
+attributes :id, :title, :project_id, :status, :priority, :notes

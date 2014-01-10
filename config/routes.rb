@@ -3,6 +3,10 @@ Episode07::Application.routes.draw do
   # Maps HTTP verbs to controller actions automatically.
   resources :crew
   resources :notdo
+  resources :focus
+  resources :project
+  resources :ticket
+  resources :procedure
 
   # localhost:81/staticlist -> renders views/application/staticlist
   match "staticlist" => "application#staticlist"

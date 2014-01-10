@@ -1,0 +1,1 @@
+attributes :id, :title, :type, :notes, :focus_id
