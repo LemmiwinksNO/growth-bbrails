@@ -1,6 +1,6 @@
 # Creates a div with a bunch of styling and places it exactly over
 # the object passed in. So if you call this on your form, it will
-# cover your form.
+# cover your form, and capture all click events.
 
 do ($) ->
   $.fn.toggleWrapper = (obj = {}, init = true) ->

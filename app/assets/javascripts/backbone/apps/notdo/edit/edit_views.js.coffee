@@ -29,9 +29,13 @@
         sup:    false
         format: false
 
-    # This gets fired when controller triggers form:submit event.
+    # We can handle 'form:submit' event here. We fire it on this view
+    # from formController, which is triggered when user hits submit on
+    # the form.
     # We can use this to prevent the form from updating.
     # onFormSubmit: (data) ->
+
+    # onFormCancel: (data) ->
 
     # Set form configuration here
     # form:

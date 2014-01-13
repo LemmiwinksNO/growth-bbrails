@@ -3,6 +3,8 @@
 #
 # Custom sync method: Call regular sync method, then set the returned
 # XHR object on the entity. (entity._fetch)
+# Custom events: added sync:start and sync:stop, which we use for adding
+# visual cues, i.e. fade form out when user hits submit.
 
 do (Backbone) ->
 
@@ -23,9 +25,10 @@ do (Backbone) ->
       entity._fetch = sync
 
   methods =
+    # fired before ajax call to server.
     beforeSend: ->
-      # fire this event before ajax call to server.
       @trigger "sync:start", @
 
+    # fired after ajax call
     complete: ->
       @trigger "sync:stop", @

@@ -17,6 +17,8 @@
 
     # Delete the model and return to root page
     # i.e. if /#notdo/25/edit -> /#notdo
+    # TODO: Keep array of URL's visited so we can send user back to where
+    # they come from. Or if array empty, go to root page.
     formRemove: ->
       model = @contentView.model
       if confirm "Are you sure you want to delete #{model.get("title")}?" then model.destroy()
@@ -32,8 +34,8 @@
 
     # Form cancel is use case specific, so we forward it to @contentView
     formCancel: ->
-      # Note we pick this up in edit_controller, but I think you can pick it up
-      # in the view too by using onFormCancel.
+      # Pick this up in contentView with onFormCancel.
+      # Or listen for it in contentView's controller.
       @contentView.triggerMethod "form:cancel"
 
     # Get our form data using syphon (creates object using 'name' as key)

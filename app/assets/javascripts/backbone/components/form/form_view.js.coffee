@@ -22,8 +22,8 @@
 
     modelEvents:
       "change:_errors"  : "changeErrors"  # Set via custom save method
-      "sync:start"      : "syncStart"
-      "sync:stop"       : "syncStop"
+      "sync:start"      : "syncStart"     # Custom sync event
+      "sync:stop"       : "syncStop"      # Custom sync event
 
     # Set properties off @options object directly on the view.
     # i.e. @config = @options.config
