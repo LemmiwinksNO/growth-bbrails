@@ -5,8 +5,6 @@
 
     initialize: ->
       notdos = App.request "notdo:entities"
-      # Shouldn't we ALWAYS have App.Focuses?
-      focuses = App.Focuses || App.request "focus:entities"
 
       App.execute "when:fetched", notdos, =>
 
