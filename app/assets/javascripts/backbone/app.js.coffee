@@ -32,6 +32,7 @@
 
   App.on "initialize:after", ->
     @startHistory()
+    App.Focuses = App.request "focus:entities"
     @navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
 
   App
