@@ -1,8 +1,8 @@
 
-@PlanetExpress.module "BacklogApp.List", (List, App, Backbone, Marionette, $, _) ->
+@PlanetExpress.module "BacklogApp2.List", (List, App, Backbone, Marionette, $, _) ->
 
   class List.Layout extends App.Views.Layout
-    template: "backlog/list/list_layout"
+    template: "backlog2/list/list_layout"
 
     regions:
       titleRegion:    '#title-region'
@@ -11,15 +11,15 @@
       backlogRegion:  '#backlog-region'
 
   class List.Title extends App.Views.ItemView
-    template: "backlog/list/_title"
+    template: "backlog2/list/_title"
 
   class List.Panel extends App.Views.ItemView
-    template: "backlog/list/_panel"
+    template: "backlog2/list/_panel"
 
     # Need two triggers -> #new_notdo and #new_project
 
   class List.BacklogItem extends App.Views.ItemView
-    template: "backlog/list/_backlog_item"
+    template: "backlog2/list/_backlog_item"
     tagName:  "li"
     className: -> "ellipsis " + @model.get 'status'
 
@@ -29,11 +29,11 @@
       "click .notdo-delete" : "notdo:delete:clicked"
 
   class List.Empty extends App.Views.ItemView
-    template: "backlog/list/_empty"
+    template: "backlog2/list/_empty"
     tagName:  "li"
 
   class List.BacklogList extends App.Views.CompositeView
-    template: "backlog/list/_backlog_list"
+    template: "backlog2/list/_backlog_list"
     itemView: List.BacklogItem
     emptyView: List.Empty
     itemViewContainer: "ul"

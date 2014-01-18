@@ -1,14 +1,14 @@
 
-@PlanetExpress.module "BacklogApp", (BacklogApp, App, Backbone, Marionette, $, _) ->
+@PlanetExpress.module "BacklogApp2", (BacklogApp2, App, Backbone, Marionette, $, _) ->
 
-  class BacklogApp.Router extends Marionette.AppRouter
-    appRoutes:
-      "backlog" : "list"
+  class BacklogApp2.Router extends Marionette.AppRouter
+    # appRoutes:
+    #   "backlog" : "list"
 
   API =
     list: ->
-      new BacklogApp.List.Controller
+      new BacklogApp2.List.Controller
 
   App.addInitializer ->
-    new BacklogApp.Router
+    new BacklogApp2.Router
       controller: API

@@ -4,18 +4,23 @@
   class List.Controller extends App.Controllers.Base
 
     initialize: ->
-      notdos = App.request "notdo:entities"
-      # Shouldn't we ALWAYS have App.Focuses?
-      focuses = App.Focuses || App.request "focus:entities"
 
-      App.execute "when:fetched", notdos, =>
+      # Shouldn't we ALWAYS have App.User.focuses?
+      @focuses = App.User.focuses
+      # @focuses = App.request "focus:entities"
+
+      App.execute "when:fetched", @focuses, =>
+
+        @projects = App.User.projects
+        @procedures = App.User.procedures
+        @tickets = App.User.tickets
 
         @layout = @getLayoutView()
 
         @listenTo @layout, "show", =>
           @titleRegion()
           @panelRegion()
-          @backlogRegion notdos
+          @backlogRegion @focuses
 
         @show @layout
 
@@ -27,13 +32,13 @@
       panel_view = @getPanelView()
       @layout.panelRegion.show panel_view
 
-    backlogRegion: (notdos) ->
-      backlog_view = @getBacklogListView notdos
+    backlogRegion: (collection) ->
+      backlog_view = @getBacklogListView collection
 
-      @listenTo backlog_view, "childview:notdo:item:clicked", (child, args) ->
-        App.vent.trigger "notdo:item:clicked", args.model
+      @listenTo backlog_view, "childview:backlog:item:clicked", (child, args) ->
+        App.vent.trigger "backlog:item:clicked", args.model
 
-      @listenTo backlog_view, "childview:notdo:delete:clicked", (child, args) ->
+      @listenTo backlog_view, "childview:backlog:delete:clicked", (child, args) ->
         model = args.model
         if confirm "Are you sure you want to delete #{model.get('title')}?" then model.destroy()
 
@@ -48,6 +53,7 @@
     getPanelView: ->
       new List.Panel
 
-    getBacklogListView: (notdos) ->
+    getBacklogListView: (collection) ->
       new List.BacklogList
-        collection: notdos
+        collection: collection
+        type: focus

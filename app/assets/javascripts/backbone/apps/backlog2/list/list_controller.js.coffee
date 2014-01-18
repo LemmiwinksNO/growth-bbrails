@@ -1,5 +1,5 @@
 
-@PlanetExpress.module "BacklogApp.List", (List, App, Backbone, Marionette, $, _) ->
+@PlanetExpress.module "BacklogApp2.List", (List, App, Backbone, Marionette, $, _) ->
 
   class List.Controller extends App.Controllers.Base
 

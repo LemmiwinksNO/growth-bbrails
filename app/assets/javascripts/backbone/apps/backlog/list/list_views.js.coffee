@@ -16,24 +16,45 @@
   class List.Panel extends App.Views.ItemView
     template: "backlog/list/_panel"
 
-    # Need two triggers -> #new_notdo and #new_project
+    # Triggers -> Add Item; Type (what type to show); Filter
 
   class List.BacklogItem extends App.Views.ItemView
-    template: "backlog/list/_backlog_item"
+    # template: "backlog/list/_backlog_item"
+
+    # Use template specific to model (4 template approach)
+    getTemplate: () ->
+      switch @options.type
+        when 'focus'     then 'backlog/list/_focus'
+        when 'project'   then 'backlog/list/_project'
+        when 'ticket'    then 'backlog/list/_ticket'
+        when 'procedure' then 'backlog/list/_procedure'
+        else 'backlog/list/_focus'
+
     tagName:  "li"
     className: -> "ellipsis " + @model.get 'status'
 
     # two triggers -> click the item, and click delete button
     triggers:
-      "click"               : "notdo:item:clicked"
-      "click .notdo-delete" : "notdo:delete:clicked"
+      "click"                 : "backlog:item:clicked"
+      "click .backlog-delete" : "backlog:delete:clicked"
 
   class List.Empty extends App.Views.ItemView
     template: "backlog/list/_empty"
     tagName:  "li"
 
   class List.BacklogList extends App.Views.CompositeView
-    template: "backlog/list/_backlog_list"
+    template: "backlog/list/_list"
     itemView: List.BacklogItem
+
+    # Use itemView specific to our model (4 ItemView approach)
+    # getItemView: (item) ->
+        # return List.BacklogItem
+
     emptyView: List.Empty
     itemViewContainer: "ul"
+    itemViewOptions: ->
+        type: "will probably put @type"
+
+    # If you passed in type -> @options.type
+    # itemViewOptions: ->  # Pass options to each itemView.
+    #   type: @options.type

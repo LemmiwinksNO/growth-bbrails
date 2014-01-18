@@ -12,18 +12,18 @@
     mainRegion:   "#main-region"
     footerRegion: "#footer-region"
 
-  # App's root route -> currently /crew
-  App.rootRoute = Routes.notdo_index_path()
+  App.rootRoute = "/backlog"
 
   App.addInitializer ->
     App.module("HeaderApp").start()
     App.module("FooterApp").start()
+    @setUserData()  # Get all the user's data and set it on App.User
 
   App.reqres.setHandler "default:region", ->
     App.mainRegion
 
-  # Ultimately this sets attaches/detaches controllers to the
-  # _registry property on PlanetExpress.
+  # Set/unset controller ids to App._registry for debugging purposes.
+  # We can use this to make sure controllers get closed.
   App.commands.setHandler "register:instance", (instance, id) ->
     App.register instance, id if App.environment is "development" or "test"
 
@@ -32,7 +32,6 @@
 
   App.on "initialize:after", ->
     @startHistory()
-    App.Focuses = App.request "focus:entities"
     @navigate(@rootRoute, trigger: true) unless @getCurrentRoute()
 
   App
