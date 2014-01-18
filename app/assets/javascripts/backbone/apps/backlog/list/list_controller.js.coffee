@@ -6,8 +6,10 @@
     initialize: ->
 
       # Shouldn't we ALWAYS have App.User.focuses?
-      @focuses = App.User.focuses
-      # @focuses = App.request "focus:entities"
+      @focuses = App.User.focuses || App.request "focus:entities"
+
+      # Type of backlog item (focus, project, ticket, procedure)
+      type = @options.type || 'focus'
 
       App.execute "when:fetched", @focuses, =>
 
@@ -19,8 +21,8 @@
 
         @listenTo @layout, "show", =>
           @titleRegion()
-          @panelRegion()
-          @backlogRegion @focuses
+          @panelRegion type
+          @showBacklogRegion type
 
         @show @layout
 
@@ -28,12 +30,33 @@
       title_view = @getTitleView()
       @layout.titleRegion.show title_view
 
-    panelRegion: ->
-      panel_view = @getPanelView()
+    # Buttons in panel region
+    #  Add Item -> Adds a focus/procedure/project/ticket
+    #  View Type -> Shows focuses/procedures/projects/tickets
+    panelRegion: (type) ->
+      panel_view = @getPanelView type
+
+      # Add Item Button Clicked
+      @listenTo panel_view, "backlog:new:item:clicked", (args) ->
+        console.log "backlog:new:item:clicked", args
+
+      # View Type Button Clicked
+      @listenTo panel_view, "backlog:type:selected", (args) ->
+        type = args.view.$el.find("#select-type").val()
+        @showBacklogRegion(type)
+        App.navigate "/backlog/#{type}"
+
       @layout.panelRegion.show panel_view
 
-    backlogRegion: (collection) ->
-      backlog_view = @getBacklogListView collection
+    showBacklogRegion: (type) ->
+      switch type
+        when 'project'    then @backlogRegion @projects, type
+        when 'focus'      then @backlogRegion @focuses, type
+        when 'ticket'     then @backlogRegion @tickets, type
+        when 'procedure'  then @backlogRegion @procedures, type
+
+    backlogRegion: (collection, type) ->
+      backlog_view = @getBacklogListView collection, type
 
       @listenTo backlog_view, "childview:backlog:item:clicked", (child, args) ->
         App.vent.trigger "backlog:item:clicked", args.model
@@ -50,10 +73,11 @@
     getTitleView: ->
       new List.Title
 
-    getPanelView: ->
+    getPanelView: (type) ->
       new List.Panel
+        type: type
 
-    getBacklogListView: (collection) ->
+    getBacklogListView: (collection, type) ->
       new List.BacklogList
         collection: collection
-        type: focus
+        type: type

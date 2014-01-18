@@ -16,19 +16,20 @@
   class List.Panel extends App.Views.ItemView
     template: "backlog/list/_panel"
 
+    # Set type dropdown
+    onRender: ->
+      type = @options.type
+      this.$el.find("select[name='type'] option[value=" + type + "]").prop('selected', true)
+
     # Triggers -> Add Item; Type (what type to show); Filter
+    triggers:
+      "click #select-type"  : "backlog:type:selected"
+      "click #new-item"     : "backlog:new:item:clicked"
 
   class List.BacklogItem extends App.Views.ItemView
-    # template: "backlog/list/_backlog_item"
-
     # Use template specific to model (4 template approach)
-    getTemplate: () ->
-      switch @options.type
-        when 'focus'     then 'backlog/list/_focus'
-        when 'project'   then 'backlog/list/_project'
-        when 'ticket'    then 'backlog/list/_ticket'
-        when 'procedure' then 'backlog/list/_procedure'
-        else 'backlog/list/_focus'
+    getTemplate: ->
+      "backlog/list/_#{@options.type}"
 
     tagName:  "li"
     className: -> "ellipsis " + @model.get 'status'
@@ -44,17 +45,12 @@
 
   class List.BacklogList extends App.Views.CompositeView
     template: "backlog/list/_list"
+    emptyView: List.Empty
     itemView: List.BacklogItem
+    itemViewContainer: "ul"
+    itemViewOptions: ->
+        type: @options.type
 
     # Use itemView specific to our model (4 ItemView approach)
     # getItemView: (item) ->
         # return List.BacklogItem
-
-    emptyView: List.Empty
-    itemViewContainer: "ul"
-    itemViewOptions: ->
-        type: "will probably put @type"
-
-    # If you passed in type -> @options.type
-    # itemViewOptions: ->  # Pass options to each itemView.
-    #   type: @options.type

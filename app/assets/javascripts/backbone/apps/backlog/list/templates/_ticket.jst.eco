@@ -1,6 +1,6 @@
 <span class="ticket-number"><%= @id %></span>
 <span class="status"><%= @status %></span>
-<span class="project"><%= @project %>: </span>
+<span class="project">Project #<%= @project_id %>: </span>
 <span class="title"><%= @title %></span>
 <span class="notdo-delete right">
   <button class="secondary extra-tiny radius">

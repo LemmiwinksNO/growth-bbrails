@@ -1,11 +1,8 @@
 <span class="ticket-number"><%= @id %></span>
-<span class="focus-id">Focus <%= @focus_id %></span>
-<!-- <span class="status"><%= @status %></span>
-<span class="project"><%= @project %>: </span> -->
+<span class="focus-id">Focus #<%= @focus_id %></span>
 <span class="title"><%= @title %></span>
 <span class="notdo-delete right">
   <button class="secondary extra-tiny radius">
     <i class="fi-trash"></i>
   </button>
 </span>
-<!-- <span class="priority right <%= @priority %>"><%= @priority %></span> -->

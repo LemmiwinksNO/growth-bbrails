@@ -17,7 +17,7 @@
           <label class="right inline">Title</label>
         </div>
         <div class="large-10 columns">
-            <input type="text" name="title" value="<%= @title %>" />
+          <input type="text" name="title" value="<%= @title %>" />
         </div>
       </div>
       <div class="row">
@@ -25,7 +25,7 @@
           <label class="right inline">Project</label>
         </div>
         <div class="large-10 columns">
-            <input type="text" name="project" value="<%= @project %>" />
+          <input type="text" name="project" value="<%= @project %>" />
         </div>
       </div>
       <div class="row">
@@ -33,13 +33,13 @@
           <label class="right inline">Status</label>
         </div>
         <div class="large-10 columns">
-            <select name="status" class="medium">
-              <option value="backlog">Backlog</option>
-              <option value="not-doing">Not Doing</option>
-              <option value="doing">Doing</option>
-              <option value="done">Done</option>
-              <option value="finished">Finished</option>
-            </select>
+          <select name="status" class="medium">
+            <option value="backlog">Backlog</option>
+            <option value="not-doing">Not Doing</option>
+            <option value="doing">Doing</option>
+            <option value="done">Done</option>
+            <option value="finished">Finished</option>
+          </select>
         </div>
       </div>
       <div class="row">
@@ -47,11 +47,11 @@
           <label class="right inline">Priority</label>
         </div>
         <div class="large-10 columns">
-            <select name="priority" class="medium">
-              <option value="high">High</option>
-              <option value="medium">Medium</option>
-              <option value="low">Low</option>
-            </select>
+          <select name="priority" class="medium">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
         </div>
       </div>
     </fieldset>

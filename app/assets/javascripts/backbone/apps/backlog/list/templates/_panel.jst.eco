@@ -1,28 +1,12 @@
 <div class="left">
-  <button id="new-notdo" class="button radius tiny secondary">
-    <i class="fi-plus"></i>
-    Add Item
-  </button>
-  <button id="new-project" class="button radius tiny secondary">
-    <i class="fi-plus"></i>
-    Add Project
-  </button>
-  <button id="select-project" data-dropdown="drop" class="button radius tiny secondary dropdown">
-    <i class="fi-plus"></i>
-    Select Project
-  </button>
-  <ul id="drop" data-dropdown-content class="f-dropdown">
-    <li><a>This is a link</a></li>
-    <li><a>This is another</a></li>
-    <li><a>Yet another</a></li>
-  </ul>
-  <button id="select-project" data-dropdown="drop2" class="button radius tiny secondary dropdown">
-    <i class="fi-plus"></i>
-    Select Project
-  </button>
-  <ul id="drop2" data-dropdown-content class="f-dropdown">
-    <li>This is a link</li>
-    <li>This is another</li>
-    <li>Yet another</li>
-  </ul>
-</div>
+    <button id="new-item" class="button radius tiny secondary">
+      <i class="fi-plus"></i>
+      Add Item
+    </button>
+    <select id="select-type" name="type" class="button radius tiny secondary">
+      <option value="focus">Focuses</option>
+      <option value="project">Projects</option>
+      <option value="ticket">Tickets</option>
+      <option value="procedure">Procedures</option>
+    </select>
+</div><!-- .left.row -->

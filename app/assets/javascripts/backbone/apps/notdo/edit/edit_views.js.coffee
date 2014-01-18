@@ -18,11 +18,13 @@
   class Edit.Notdo extends App.Views.ItemView
     template: "notdo/edit/edit_notdo"
 
-    # Set the status for dropdown
+    # Set priority and status dropdowns
     # Start jQuery text editor
     onRender: ->
       status = @model.get('status')
-      this.$el.find("option[value=" + status + "]").prop('selected', true)
+      priority = @model.get('priority')
+      this.$el.find("select[name='status'] option[value=" + status + "]").prop('selected', true)
+      this.$el.find("select[name='priority'] option[value=" + priority + "]").prop('selected', true)
 
       this.$el.find(".jqte").jqte
         sub:    false
