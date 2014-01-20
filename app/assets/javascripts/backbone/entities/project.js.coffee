@@ -12,10 +12,8 @@
     #   return response
 
     # Create TicketCollection from ticket array
-    initialize: (model) ->
-      @set('tickets', App.request "new:ticket:collection", model.tickets)
-      # @set('tickets', new Entities.TicketCollection model.tickets)
-      # @set('tickets', new Entities.TicketCollection @.get('tickets')) # same thing
+    initialize: ->
+      @set('tickets', App.request "new:ticket:collection", @get('tickets'))
 
   class Entities.ProjectCollection extends App.Entities.Collection
     model: Entities.Project

@@ -8,7 +8,10 @@
 
     urlRoot: -> Routes.ticket_index_path()
 
-  # Will need filter methods
+    # Maintain collection in sorted order
+    comparator: (ticket) -> ticket.get "status"
+
+    # Will need filter methods
 
   API =
 

@@ -19,7 +19,7 @@
 
       _.defaults options,
         wait: true  # We want to wait for server response by default.
-        # User bind when you want to call something later.
+        # Use bind when you want to call something later.
         # _.bind takes method, context, arguments
         success: _.bind(@saveSuccess, @, isNew, options.collection)
         error:   _.bind(@saveError, @)

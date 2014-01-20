@@ -3,7 +3,7 @@
   class New.Controller extends App.Controllers.Base
 
     initialize: ->
-      type = @options.type
+      { type, collection } = @options
 
       # Create a new item (focus, project, ticket, procedure)
       item = App.request "new:#{type}:entity"
@@ -11,7 +11,7 @@
       # Once item is created, forward custom event to parent app so
       # we can redirect user to edit page.
       @listenTo item, "created", ->
-        console.log "created backlog:item:created", item, type
+        collection?.add item
         App.vent.trigger "backlog:item:created", item, type
 
       newView = @getNewView item, type

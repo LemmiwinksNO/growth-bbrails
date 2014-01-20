@@ -22,7 +22,7 @@
         @listenTo @layout, "show", =>
           @titleRegion type
           @panelRegion type
-          @showBacklogRegion type
+          @backlogRegion type
 
         @show @layout
 
@@ -45,7 +45,7 @@
       @listenTo panel_view, "backlog:type:selected", (args) ->
         type = args.view.$el.find("#select-type").val()
         @titleRegion type  # So breadcrumbs update
-        @showBacklogRegion type
+        @backlogRegion type
         App.navigate "/backlog/#{type}"
 
       @layout.panelRegion.show panel_view
@@ -53,16 +53,13 @@
     # Backlog.New module will handle this region.
     # Fire off command to parent app.
     newRegion: (type) ->
-      App.execute "backlog:new:item", @layout.newRegion, type
+      collection = @getCollectionFromType type
 
-    showBacklogRegion: (type) ->
-      switch type
-        when 'project'    then @backlogRegion @projects, type
-        when 'focus'      then @backlogRegion @focuses, type
-        when 'ticket'     then @backlogRegion @tickets, type
-        when 'procedure'  then @backlogRegion @procedures, type
+      App.execute "backlog:new:item", @layout.newRegion, type, collection
 
-    backlogRegion: (collection, type) ->
+    backlogRegion: (type) ->
+      collection = @getCollectionFromType type
+
       backlog_view = @getBacklogListView collection, type
 
       @listenTo backlog_view, "childview:backlog:item:clicked", (child, args) ->
@@ -73,6 +70,13 @@
         if confirm "Are you sure you want to delete #{model.get('title')}?" then model.destroy()
 
       @layout.backlogRegion.show backlog_view
+
+    getCollectionFromType: (type) ->
+      switch type
+        when 'focus'      then collection = @focuses
+        when 'project'    then collection = @projects
+        when 'ticket'     then collection = @tickets
+        when 'procedure'  then collection = @procedures
 
     getLayoutView: ->
       new List.Layout

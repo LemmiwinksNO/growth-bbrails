@@ -25,7 +25,7 @@
           <label class="right inline">Type</label>
         </div>
         <div class="large-10 columns">
-          <select name="type" class="medium">
+          <select name="category" class="medium">
             <option value="scheduled">Scheduled</option>
             <option value="scenario">Scenario</option>
             <option value="reminder">Reminder</option>

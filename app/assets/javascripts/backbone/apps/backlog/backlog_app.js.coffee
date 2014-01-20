@@ -15,10 +15,11 @@
       new BacklogApp.List.Controller
         type: type
 
-    newItem: (region, type) ->
+    newItem: (region, type, collection) ->
       new BacklogApp.New.Controller
         region: region
         type: type
+        collection: collection
 
     # Start Edit Controller - edit a model
     # We start this up when a new item is added, or an item is clicked.
@@ -31,8 +32,8 @@
 
 
   # Setup new module
-  App.commands.setHandler "backlog:new:item", (region, type) ->
-    API.newItem region, type
+  App.commands.setHandler "backlog:new:item", (region, type, collection) ->
+    API.newItem region, type, collection
 
   # When a backlog item is created or clicked, redirect to edit page and update URL
   App.vent.on "backlog:item:clicked backlog:item:created", (item, type) ->

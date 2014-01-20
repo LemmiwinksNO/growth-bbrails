@@ -13,9 +13,6 @@
 
         if item then item else item = @getItem type, id
 
-        @listenTo item, 'all', (event_name) ->
-          console.log "Event name = ", event_name
-
         # "updated" is a event we added via our custom model save method
         @listenTo item, "updated", ->
           App.vent.trigger "backlog:item:updated", item, type
