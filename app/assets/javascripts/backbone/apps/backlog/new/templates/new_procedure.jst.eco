@@ -1,0 +1,8 @@
+<div id="new-procedure">
+  <div class="row">
+    <div class="large-12 columns">
+      <label>What's the procedure?</label>
+      <input type="text" name="title" placeholder="Procedure Name"/>
+    </div>
+  </div>
+</div>

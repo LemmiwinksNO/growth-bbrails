@@ -12,7 +12,10 @@
   </div>
 </div>
 <ul class="breadcrumbs">
-  <li><a href="/">Home</a></li>
-  <li class="current"><a href="#">Notdoing</a></li>
-  <li class="unavailable"><a href="#">Item</a></li>
+  <li><a href="/#backlog">Backlog</a></li>
+  <% if @type == 'focus': %>
+    <li class="current"><a href="/#backlog/<%= @type %>"><%= @type %>es</a></li>
+  <% else: %>
+    <li class="current"><a href="/#backlog/<%= @type %>"><%= @type %>s</a></li>
+  <% end %>
 </ul>

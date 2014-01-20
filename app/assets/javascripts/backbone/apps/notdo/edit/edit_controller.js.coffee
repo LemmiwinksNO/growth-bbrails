@@ -10,7 +10,7 @@
       # Point is to only get the item model if we don't already have it.
       item or= App.request "notdo:entity", id
 
-      # "udpated" is a event we added via our custom model save method
+      # "updated" is a event we added via our custom model save method
       @listenTo item, "updated", ->
         App.vent.trigger "notdo:item:updated", item
 

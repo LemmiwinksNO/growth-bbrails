@@ -4,8 +4,8 @@
     template: "notdo/edit/edit_layout"
 
     regions:
-      formRegion: "#form-region"
-      titleRegion: "#title-region"
+      formRegion:   "#form-region"
+      titleRegion:  "#title-region"
 
   class Edit.Title extends App.Views.ItemView
     template: "notdo/edit/edit_title"

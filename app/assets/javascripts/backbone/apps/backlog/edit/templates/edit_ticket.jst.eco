@@ -1,0 +1,65 @@
+<div id="edit-ticket">
+  <div class="row">
+
+    <fieldset class="large-8 small-12 columns">
+      <legend>Notes</legend>
+      <div class="row">
+        <div class="large-12 columns left">
+          <textarea name="notes" class="large-12 jqte"><%= @notes %></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="large-4 small-12 columns">
+      <legend>Details</legend>
+      <div class="row">
+        <div class="large-2 columns">
+          <label class="right inline">Title</label>
+        </div>
+        <div class="large-10 columns">
+          <input type="text" name="title" value="<%= @title %>" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-2 columns">
+          <label class="right inline">Project</label>
+        </div>
+        <div class="large-10 columns">
+          <select name="project_id" class="medium">
+            <% for project in @projects: %>
+              <option value="<%= project.id %>"><%= project.title %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-2 columns">
+          <label class="right inline">Status</label>
+        </div>
+        <div class="large-10 columns">
+          <select name="status" class="medium">
+            <option value="backlog">Backlog</option>
+            <option value="not-doing">Not Doing</option>
+            <option value="doing">Doing</option>
+            <option value="done">Done</option>
+            <option value="finished">Finished</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-2 columns">
+          <label class="right inline">Priority</label>
+        </div>
+        <div class="large-10 columns">
+          <select name="priority" class="medium">
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+  </div>
+</div>
+

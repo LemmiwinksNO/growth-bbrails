@@ -20,14 +20,14 @@
         @layout = @getLayoutView()
 
         @listenTo @layout, "show", =>
-          @titleRegion()
+          @titleRegion type
           @panelRegion type
           @showBacklogRegion type
 
         @show @layout
 
-    titleRegion: ->
-      title_view = @getTitleView()
+    titleRegion: (type) ->
+      title_view = @getTitleView type
       @layout.titleRegion.show title_view
 
     # Buttons in panel region
@@ -38,15 +38,22 @@
 
       # Add Item Button Clicked
       @listenTo panel_view, "backlog:new:item:clicked", (args) ->
-        console.log "backlog:new:item:clicked", args
+        type = args.view.$el.find("#select-type").val()
+        @newRegion type
 
       # View Type Button Clicked
       @listenTo panel_view, "backlog:type:selected", (args) ->
         type = args.view.$el.find("#select-type").val()
-        @showBacklogRegion(type)
+        @titleRegion type  # So breadcrumbs update
+        @showBacklogRegion type
         App.navigate "/backlog/#{type}"
 
       @layout.panelRegion.show panel_view
+
+    # Backlog.New module will handle this region.
+    # Fire off command to parent app.
+    newRegion: (type) ->
+      App.execute "backlog:new:item", @layout.newRegion, type
 
     showBacklogRegion: (type) ->
       switch type
@@ -59,7 +66,7 @@
       backlog_view = @getBacklogListView collection, type
 
       @listenTo backlog_view, "childview:backlog:item:clicked", (child, args) ->
-        App.vent.trigger "backlog:item:clicked", args.model
+        App.vent.trigger "backlog:item:clicked", args.model, type
 
       @listenTo backlog_view, "childview:backlog:delete:clicked", (child, args) ->
         model = args.model
@@ -70,8 +77,9 @@
     getLayoutView: ->
       new List.Layout
 
-    getTitleView: ->
+    getTitleView: (type) ->
       new List.Title
+        type: type
 
     getPanelView: (type) ->
       new List.Panel

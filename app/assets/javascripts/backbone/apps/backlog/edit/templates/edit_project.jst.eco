@@ -1,0 +1,41 @@
+<% console.log "template @ ", @ %>
+
+<div id="edit-project">
+  <div class="row">
+
+    <fieldset class="large-8 small-12 columns">
+      <legend>Notes</legend>
+      <div class="row">
+        <div class="large-12 columns left">
+          <textarea name="notes" class="large-12 jqte"><%= @notes %></textarea>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="large-4 small-12 columns">
+      <legend>Details</legend>
+      <div class="row">
+        <div class="large-2 columns">
+          <label class="right inline">Title</label>
+        </div>
+        <div class="large-10 columns">
+          <input type="text" name="title" value="<%= @title %>" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-2 columns">
+          <label class="right inline">Focus</label>
+        </div>
+        <div class="large-10 columns">
+          <select name="focus_id" class="medium">
+            <% for focus in @focuses: %>
+              <option value="<%= focus.id %>"><%= focus.title %></option>
+            <% end %>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+  </div>
+</div>
+

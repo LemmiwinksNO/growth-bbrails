@@ -22,7 +22,7 @@
       # If model is destroyed
       # NOTE: Added check for isDestroyed function b/c my empty views have an empty
       # model for some reason.
-      if _.isFunction(@model?.isDestroyed) && @model.isDestroyed()
+      if @model?.isDestroyed?()  # confirm we have a model and isDestroyed() == function
         # wrap el in toggleWrapper like forms but with red background
         wrapper = @$el.toggleWrapper
           className: 'opacity'

@@ -36,7 +36,7 @@
     API.edit item.id, item
 
   # When notdo item is cancelled or updated, go back to list page and update URL.
-  App.vent.on "notdo:item:cancelled notdo:item:updated", (notdo) ->
+  App.vent.on "notdo:item:cancelled notdo:item:updated", (item) ->
     App.navigate Routes.notdo_index_path()
     API.list()
 

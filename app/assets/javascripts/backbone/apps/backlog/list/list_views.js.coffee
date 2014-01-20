@@ -13,6 +13,9 @@
   class List.Title extends App.Views.ItemView
     template: "backlog/list/_title"
 
+    serializeData: ->
+      type: @options.type
+
   class List.Panel extends App.Views.ItemView
     template: "backlog/list/_panel"
 
