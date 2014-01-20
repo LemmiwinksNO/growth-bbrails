@@ -27,9 +27,9 @@
       # route = frag.match(/[a-z]*/)[0] || "/"
       # Backbone.history.navigate(route, { trigger: true })
 
-      window.history.back()  # This is another option
+      # window.history.back()  # This is another option
 
-      # @contentView.triggerMethod "form:delete"  # third option
+      # @contentView.triggerMethod "form:remove"  # third option
       # @contentView.triggerMethod "form:cancel"  # fourth option
 
     # Form cancel is use case specific, so we forward it to @contentView

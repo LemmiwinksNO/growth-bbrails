@@ -39,7 +39,8 @@
     App.navigate "backlog/#{type}/#{item.id}/edit"  # backlog/ticket/34/edit
     API.edit type, item.id, item
 
-  App.vent.on "backlog:item:cancelled backlog:item:updated", (item, type) ->
+  # From edit mode, if a item is cancelled, updated, or deleted, go back to list.
+  App.vent.on "backlog:item:cancelled backlog:item:updated backlog:item:destroyed", (item, type) ->
     App.navigate "backlog/#{type}"
     API.list type
 
