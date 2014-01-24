@@ -1,4 +1,5 @@
 <span class="ticket-number"><%= @id %></span>
+<span class="category"><%= @category %></span>
 <span class="focus-id">Focus #<%= @focus_id %></span>
 <span class="title"><%= @title %></span>
 <span class="notdo-delete right">

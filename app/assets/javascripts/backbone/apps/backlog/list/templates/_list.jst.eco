@@ -4,7 +4,7 @@
       <h2>Growth App</h2>
     </div>
     <div class="box-content scrollable">
-      <ul class="items not-doing"></ul>
+      <ul class="items"></ul>
     </div>
   </div> <!-- class="box" -->
 </div> <!-- class="large-12 columns" -->
