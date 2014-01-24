@@ -3,10 +3,15 @@
 
   class List.Controller extends App.Controllers.Base
 
-    initialize: ->
+    initialize: (options) ->
 
       # Type of backlog item (focus, project, ticket, procedure)
-      type = @options.type || 'focus'
+      type = options.type || 'focus'
+
+      # This is more decoupled
+      # user = App.User || App.request "user:entity"
+      # App.execute "when:fetched", user, ->
+      #   { @focuses, @projects, @tickets, @procedures } = user
 
       App.execute "when:fetched", App.User.focuses, =>
 

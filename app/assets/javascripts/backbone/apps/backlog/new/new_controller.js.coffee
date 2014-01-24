@@ -2,8 +2,8 @@
 
   class New.Controller extends App.Controllers.Base
 
-    initialize: ->
-      { type, collection } = @options
+    initialize: (options) ->
+      { type, collection } = options
 
       # Create a new item (focus, project, ticket, procedure)
       item = App.request "new:#{type}:entity"

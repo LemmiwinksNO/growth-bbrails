@@ -18,9 +18,7 @@
     #     know to clean up this controller. <br>
     #       @listenTo @layout, "close", @close.
     #       App.mainRegion.show @layout
-    initialize: ->
-
-      console.log "listController"
+    initialize: (options) ->
 
       App.execute "when:fetched", App.User.focuses, =>
 
