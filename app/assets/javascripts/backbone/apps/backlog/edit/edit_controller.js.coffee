@@ -12,7 +12,7 @@
 
         { @focuses, @projects, @tickets, @procedures } = App.User
 
-        if item then item else item = @getItem type, id
+        item ?= @getItem type, id
 
         # "updated" is a event we added via our custom model save method
         @listenTo item, "updated", ->

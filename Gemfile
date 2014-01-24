@@ -25,7 +25,6 @@ group :assets do
   gem 'modernizr-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-    gem 'coffee-script-source', '~> 1.5.0'  # 1.6 doesn't include line numbers in exceptions
   gem "eco"
   gem "compass-rails"
   gem 'foundation-rails'   # Foundation 5.0

@@ -1,0 +1,10 @@
+<div class="large-4 medium-6 small-12 columns <%= @status %>">
+  <div class="box">
+    <div class="box-header text-center">
+      <h2><%= @title %></h2>
+    </div>
+    <div class="box-content scrollable">
+      <ul class="items <%= @status %>"></ul>
+    </div>
+  </div>
+</div>

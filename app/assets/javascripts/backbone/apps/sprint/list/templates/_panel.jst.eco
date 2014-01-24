@@ -1,0 +1,6 @@
+<div class="left">
+  <button id="new-ticket" class="button radius tiny secondary">
+    <i class="fi-plus"></i>
+    Add
+  </button>
+</div>

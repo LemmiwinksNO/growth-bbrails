@@ -1,0 +1,8 @@
+<div id="new-ticket">
+  <div class="row">
+    <div class="large-12 columns">
+      <label>What's the task?</label>
+      <input type="text" name="title" placeholder="Task Name"/>
+    </div>
+  </div>
+</div>

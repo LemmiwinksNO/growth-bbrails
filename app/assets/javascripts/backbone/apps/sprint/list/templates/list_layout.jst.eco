@@ -1,0 +1,16 @@
+<div id="sprint-list">
+  <div id="title-region"></div>
+  <section>
+    <div class="row large-12">
+      <div id="panel-region" class="large-12 columns"></div>
+      <div id="new-region" class="large-12 columns"></div>
+    </div>
+  </section>
+  <section>
+    <div class="row">
+      <div id="notdoing-region"></div>
+      <div id="doing-region"></div>
+      <div id="done-region"></div>
+    </div>
+  </section>
+</div>

@@ -24,9 +24,9 @@
           </li>
           <li class="divider"></li>
               <li>
-            <a href="/#notdo">
+            <a href="/#sprint">
               <i class="fi-list"></i>
-              Not Doing List
+              Sprint
             </a>
           </li>
           <li class="divider"></li>

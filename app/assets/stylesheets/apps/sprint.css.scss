@@ -1,4 +1,4 @@
-// Improves spacing between notdo lists
+// Improves spacing between sprint lists
 .doing.columns { padding: 0; }
 
 .box {
@@ -74,12 +74,12 @@
         @include border-radius(2px, 2px);
         text-transform: uppercase;
 
-        &.high {  background-color: #cc1515;  }
+        &.high   {  background-color: #cc1515;  }
         &.medium {  background-color: #e07a20;  }
-        &.low {  background-color: #2487d0;  }
+        &.low    {  background-color: #2487d0;  }
       }
 
-      .notdo-delete {
+      .ticket-delete {
         padding-right: 3px;
 
         button {
@@ -91,7 +91,7 @@
 
       &:hover {
         background-color: darken($secondary-color, 5%);
-        .notdo-delete > button {
+        .ticket-delete > button {
           // visibility: visible;
           display: inline;
         }

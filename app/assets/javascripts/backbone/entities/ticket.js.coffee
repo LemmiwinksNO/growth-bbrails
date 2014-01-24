@@ -11,7 +11,13 @@
     # Maintain collection in sorted order
     comparator: (ticket) -> ticket.get "status"
 
-    # Will need filter methods
+    # Filter methods
+    filterByStatus: (status) ->
+      @filter (ticket) -> ticket.get('status') == status
+
+    # Wrap filter results in a collection
+    filterByStatusCollection: (status) ->
+      new Entities.TicketCollection @filterByStatus(status)
 
   API =
 
