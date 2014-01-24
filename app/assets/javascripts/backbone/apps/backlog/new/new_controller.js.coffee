@@ -8,12 +8,13 @@
       # Create a new item (focus, project, ticket, procedure)
       item = App.request "new:#{type}:entity"
 
-      # Once item is created, forward custom event to parent app so
-      # we can redirect user to edit page.
+      # Once item is created, add it to the relevant collection and forward
+      # custom event to parent app so we can redirect user to edit page.
       @listenTo item, "created", ->
         collection?.add item
         App.vent.trigger "backlog:item:created", item, type
 
+      # Get newView and wrap it in a form
       newView = @getNewView item, type
       formView = App.request "form:wrapper", newView
         # Can put custom form configurables here or within the view

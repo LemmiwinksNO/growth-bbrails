@@ -31,11 +31,11 @@
         item: item
 
 
-  # Setup new module
+  # Setup new sub-module
   App.commands.setHandler "backlog:new:item", (region, type, collection) ->
     API.newItem region, type, collection
 
-  # When a backlog item is created or clicked, redirect to edit page and update URL
+  # When a backlog item is created or clicked, redirect to edit page and update URL.
   App.vent.on "backlog:item:clicked backlog:item:created", (item, type) ->
     App.navigate "backlog/#{type}/#{item.id}/edit"  # backlog/ticket/34/edit
     API.edit type, item.id, item

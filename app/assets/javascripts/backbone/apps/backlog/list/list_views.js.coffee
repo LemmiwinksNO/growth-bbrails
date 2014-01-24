@@ -52,7 +52,7 @@
     itemView: List.BacklogItem
     itemViewContainer: "ul"
     itemViewOptions: ->
-        type: @options.type
+      type: @options.type
 
     # Use itemView specific to our model (4 ItemView approach)
     # getItemView: (item) ->

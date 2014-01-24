@@ -5,17 +5,12 @@
 
     initialize: ->
 
-      # Shouldn't we ALWAYS have App.User.focuses?
-      @focuses = App.User.focuses || App.request "focus:entities"
-
       # Type of backlog item (focus, project, ticket, procedure)
       type = @options.type || 'focus'
 
-      App.execute "when:fetched", @focuses, =>
+      App.execute "when:fetched", App.User.focuses, =>
 
-        @projects = App.User.projects
-        @procedures = App.User.procedures
-        @tickets = App.User.tickets
+        { @focuses, @projects, @tickets, @procedures } = App.User
 
         @layout = @getLayoutView()
 

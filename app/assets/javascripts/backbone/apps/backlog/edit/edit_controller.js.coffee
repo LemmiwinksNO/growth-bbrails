@@ -9,6 +9,7 @@
       # Use item if it was passed in, otherwise get it.
       # Load the page.
       App.execute "when:fetched", App.User.focuses, =>
+
         { @focuses, @projects, @tickets, @procedures } = App.User
 
         if item then item else item = @getItem type, id
