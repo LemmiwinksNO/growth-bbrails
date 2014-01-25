@@ -43,6 +43,11 @@
         @focusFirstInput() if @config.focusFirstInput
         @buttonPlacement() if @buttons
 
+    # Form can close BEFORE sync:stop event, which we use as a trigger
+    # to remove the opacity wrapper. Make sure it gets closed.
+    onClose: ->
+      @syncStop() if @config.syncing
+
     # Focus on first input that is visible and enabled
     focusFirstInput: ->
       @$(":input:visible:enabled:first").focus()

@@ -41,8 +41,8 @@
       model.save data
 
     # Called automatically when this controller closes.
-    # onClose: ->
-      # console.log "onClose", @
+    onClose: ->
+      console.log "form onClose", @
 
     # Need to set region for this controller b/c it wasn't passed in.
     formContentRegion: ->

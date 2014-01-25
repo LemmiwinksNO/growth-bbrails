@@ -5,6 +5,9 @@
 # XHR object on the entity. (entity._fetch)
 # Custom events: added sync:start and sync:stop, which we use for adding
 # visual cues, i.e. fade form out when user hits submit.
+# NOTE: sync:start and sync:stop stuff is a bit tricky. i.e. our form CLOSES out
+# before it gets sync:stop trigger sometimes, meaning the opacity wrapper isn't
+# closed out.
 
 do (Backbone) ->
 
