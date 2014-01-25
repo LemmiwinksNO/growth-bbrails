@@ -22,7 +22,7 @@
 
       App.execute "when:fetched", App.User.focuses, =>
 
-        tickets = App.User.tickets
+        @tickets = App.User.tickets
 
         @layout = @getLayoutView()
 
@@ -31,9 +31,9 @@
           @panelRegion()
 
           # Set filtered collections
-          not_doing_collection = tickets.filterByStatusCollection("not-doing");
-          doing_collection = tickets.filterByStatusCollection("doing")
-          done_collection = tickets.filterByStatusCollection("done")
+          not_doing_collection = @tickets.filterByStatusCollection("not-doing");
+          doing_collection = @tickets.filterByStatusCollection("doing")
+          done_collection = @tickets.filterByStatusCollection("done")
 
           # Add columns, passing in filtered collections.
           @sprintRegion not_doing_collection, "Not Doing", "not-doing"
@@ -60,7 +60,9 @@
     # Let Sprint.New module handle this region. <br>
     # (1) Fire off command to parent app, which will set up New module.
     newRegion: ->
-      App.execute "new:sprint:item", @layout.newRegion
+      collection = @tickets
+      console.log collection
+      App.execute "new:sprint:item", @layout.newRegion, collection
 
     # (1) Get view <br>
     # (2) Listen for user clicking a sprint item and redirect to edit page. <br>

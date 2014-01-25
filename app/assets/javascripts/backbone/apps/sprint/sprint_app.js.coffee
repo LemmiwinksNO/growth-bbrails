@@ -13,9 +13,10 @@
     list: ->
       new SprintApp.List.Controller
 
-    newTicket: (region) ->
+    newTicket: (region, collection) ->
       new SprintApp.New.Controller
         region: region
+        collection: collection
 
     # 2 entry points to edit page:
     # (1) User clicks ticket in list page (we have the item)
@@ -26,8 +27,9 @@
         item: item
 
   # When user clicks add, setup New module.
-  App.commands.setHandler "new:sprint:item", (region) ->
-    API.newTicket region
+  App.commands.setHandler "new:sprint:item", (region, collection) ->
+    console.log collection
+    API.newTicket region, collection
 
   # When ticket is clicked or created, redirect to edit page and update URL.
   App.vent.on "sprint:item:clicked sprint:item:created", (item) ->

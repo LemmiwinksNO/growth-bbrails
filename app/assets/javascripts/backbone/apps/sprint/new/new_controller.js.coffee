@@ -3,6 +3,8 @@
   class New.Controller extends App.Controllers.Base
 
     initialize: (options) ->
+      collection = options.collection
+
       ticket = App.request "new:ticket:entity"
 
       # Custom event from our custom save method (/entities/_base/models.js).
@@ -10,6 +12,7 @@
       # Once item is created, forward custom event to parent app so we
       # can redirect user to edit page.
       @listenTo ticket, "created", ->
+        collection?.add ticket
         App.vent.trigger "sprint:item:created", ticket
 
       newView = @getNewView ticket
