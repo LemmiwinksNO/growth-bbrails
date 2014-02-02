@@ -43,8 +43,8 @@
     # Set focus dropdown
     # Start jQuery text editor
     onRender: ->
-      focus_id = @model.get('focus_id')
-      this.$("select[name='focus_id'] option[value=" + focus_id + "]").prop('selected', true)
+      focus_area_id = @model.get('focus_area_id')
+      this.$("select[name='focus_area_id'] option[value=" + focus_area_id + "]").prop('selected', true)
 
       this.$(".jqte").jqte
         sub:    false
@@ -88,8 +88,8 @@
     # Set focus dropdown
     # Start jQuery text editor
     onRender: ->
-      focus_id = @model.get('focus_id')
-      this.$("select[name='focus_id'] option[value=" + focus_id + "]").prop('selected', true)
+      focus_area_id = @model.get('focus_area_id')
+      this.$("select[name='focus_area_id'] option[value=" + focus_area_id + "]").prop('selected', true)
 
       this.$(".jqte").jqte
         sub:    false

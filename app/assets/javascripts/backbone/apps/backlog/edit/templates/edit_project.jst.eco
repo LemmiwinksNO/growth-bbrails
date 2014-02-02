@@ -1,5 +1,3 @@
-<% console.log "template @ ", @ %>
-
 <div id="edit-project">
   <div class="row">
 
@@ -27,7 +25,7 @@
           <label class="right inline">Focus</label>
         </div>
         <div class="large-10 columns">
-          <select name="focus_id" class="medium">
+          <select name="focus_area_id" class="medium">
             <% for focus in @focuses: %>
               <option value="<%= focus.id %>"><%= focus.title %></option>
             <% end %>

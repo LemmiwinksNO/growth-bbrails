@@ -1,1 +1,1 @@
-attributes :id, :title, :category, :notes, :focus_id
+attributes :id, :title, :category, :notes, :focus_area_id

@@ -1,6 +1,6 @@
 <span class="ticket-number"><%= @id %></span>
 <span class="category"><%= @category %></span>
-<span class="focus-id">Focus #<%= @focus_id %></span>
+<span class="focus-area-id">Focus #<%= @focus_area_id %></span>
 <span class="title"><%= @title %></span>
 <span class="notdo-delete right">
   <button class="secondary extra-tiny radius">

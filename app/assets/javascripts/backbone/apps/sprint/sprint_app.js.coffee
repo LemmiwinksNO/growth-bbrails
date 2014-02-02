@@ -28,7 +28,6 @@
 
   # When user clicks add, setup New module.
   App.commands.setHandler "new:sprint:item", (region, collection) ->
-    console.log collection
     API.newTicket region, collection
 
   # When ticket is clicked or created, redirect to edit page and update URL.

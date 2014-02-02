@@ -1,9 +1,10 @@
 Episode07::Application.routes.draw do
 	# Add index/create/new/edit/show/update/destroy routes
   # Maps HTTP verbs to controller actions automatically.
+  resources :user
   resources :crew
   resources :notdo
-  resources :focus
+  resources :focus_area
   resources :project
   resources :ticket
   resources :procedure

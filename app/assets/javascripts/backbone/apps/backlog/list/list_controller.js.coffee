@@ -9,13 +9,14 @@
       type = options.type || 'focus'
 
       # This is more decoupled
-      # user = App.User || App.request "user:entity"
-      # App.execute "when:fetched", user, ->
-      #   { @focuses, @projects, @tickets, @procedures } = user
+      user = App.User || App.request "user:entity"
 
-      App.execute "when:fetched", App.User.focuses, =>
+      App.execute "when:fetched", user, =>
 
-        { @focuses, @projects, @tickets, @procedures } = App.User
+        @focuses = App.User.get('focuses')
+        @projects = App.User.get('projects')
+        @tickets = App.User.get('tickets')
+        @procedures = App.User.get('procedures')
 
         @layout = @getLayoutView()
 

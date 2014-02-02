@@ -9,7 +9,7 @@
     urlRoot: -> Routes.ticket_index_path()
 
     # Maintain collection in sorted order
-    comparator: (ticket) -> ticket.get "status"
+    comparator: (ticket) -> ticket.get "priority"
 
     # Filter methods
     filterByStatus: (status) ->

@@ -17,7 +17,7 @@
   App.addInitializer ->
     App.module("HeaderApp").start()
     App.module("FooterApp").start()
-    @setUserData()  # Get all the user's data and set it on App.User
+    @setUser()  # Get all the user's data and set it on App.User
 
   App.reqres.setHandler "default:region", ->
     App.mainRegion

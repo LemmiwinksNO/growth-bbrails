@@ -6,8 +6,11 @@
       # Sets id and item from options.id and options.item
       { id, item } = options
 
-      App.execute "when:fetched", App.User.focuses, =>
-        { @tickets, @projects } = App.User
+      user = App.User || App.request "user:entity"
+
+      App.execute "when:fetched", App.User, =>
+        @tickets = App.User.get('tickets')
+        @projects = App.User.get('projects')
 
         item ?= @getItem id
 

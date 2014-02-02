@@ -5,12 +5,17 @@
     initialize: (options) ->
       { id, item, type } = options
 
+      user = App.User || App.request "user:entity"
+
       # Once we have all our data, set it on the controller.
       # Use item if it was passed in, otherwise get it.
       # Load the page.
-      App.execute "when:fetched", App.User.focuses, =>
+      App.execute "when:fetched", user, =>
 
-        { @focuses, @projects, @tickets, @procedures } = App.User
+        @focuses = App.User.get('focuses')
+        @projects = App.User.get('projects')
+        @tickets = App.User.get('tickets')
+        @procedures = App.User.get('procedures')
 
         item ?= @getItem type, id
 

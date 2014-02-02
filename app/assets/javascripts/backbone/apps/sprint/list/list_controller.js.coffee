@@ -20,9 +20,11 @@
     #       App.mainRegion.show @layout
     initialize: (options) ->
 
-      App.execute "when:fetched", App.User.focuses, =>
+      user = App.User || App.request "user:entity"
 
-        @tickets = App.User.tickets
+      App.execute "when:fetched", App.User, =>
+
+        @tickets = App.User.get('tickets')
 
         @layout = @getLayoutView()
 

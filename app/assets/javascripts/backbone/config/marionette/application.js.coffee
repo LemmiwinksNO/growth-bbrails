@@ -39,30 +39,11 @@ do (Backbone) ->
       _.size @_registry
 
     # Get all user data and set it on the Application object
-    # TODO: User model/controller/view on backend, we send down all the user's
-    # data at once. We have a User BB model, maybe we put all this logic there.
-    # TODO: Is this the right place to do this?
-    setUserData: ->
-      @User = {}
-      @User.focuses = @request "focus:entities"
+    setUser: ->
+      user_id = @getUserID()
+      @User = @request "user:entity", user_id
 
-      # Everything is included with focuses
-      @execute "when:fetched", @User.focuses, =>
-
-        # Get all projects and store in @User.projects
-        @User.projects = @request "new:project:collection"  # Empty collection
-        project_collections = @User.focuses.pluck('projects')  # Get array of projectCollections
-        _.each project_collections, (project_collection) =>
-          @User.projects.add project_collection.models
-
-        # Get all procedures and store in @User.procedures
-        @User.procedures = @request "new:procedure:collection"  # Empty collection
-        procedure_collections = @User.focuses.pluck('procedures')  # Get array of procedureCollections
-        _.each procedure_collections, (procedure_collection) =>
-          @User.procedures.add procedure_collection.models
-
-        # Get all tickets and store in @User.tickets
-        @User.tickets = @request "new:ticket:collection"  # Empty collection
-        ticket_collections = @User.projects.pluck('tickets') # Get array of ticketCollections
-        _.each ticket_collections, (ticket_collection) =>
-          @User.tickets.add ticket_collection.models
+    # TODO: How do we handle User ID's? When do we set it?
+    # Currently hard coded to return 1, since that is the only user.
+    getUserID: ->
+      return 1

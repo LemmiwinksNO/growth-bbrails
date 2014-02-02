@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140110135443) do
+ActiveRecord::Schema.define(:version => 20140202050440) do
 
   create_table "crews", :force => true do |t|
     t.integer  "age"
@@ -25,11 +25,12 @@ ActiveRecord::Schema.define(:version => 20140110135443) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "focus", :force => true do |t|
+  create_table "focus_areas", :force => true do |t|
     t.string   "title"
     t.text     "notes"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
   end
 
   create_table "notdos", :force => true do |t|
@@ -49,17 +50,19 @@ ActiveRecord::Schema.define(:version => 20140110135443) do
     t.string   "title"
     t.string   "category"
     t.text     "notes"
-    t.integer  "focus_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "focus_area_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
   end
 
   create_table "projects", :force => true do |t|
     t.string   "title"
     t.text     "notes"
-    t.integer  "focus_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "focus_area_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "user_id"
   end
 
   create_table "tickets", :force => true do |t|
@@ -68,6 +71,13 @@ ActiveRecord::Schema.define(:version => 20140110135443) do
     t.string   "status"
     t.string   "priority"
     t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
