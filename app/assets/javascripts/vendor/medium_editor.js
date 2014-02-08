@@ -606,7 +606,6 @@ if (typeof module === 'object') {
         execFormatBlock: function (el) {
             var selectionData = this.getSelectionData(this.selection.anchorNode);
             // console.log("execFormatBlock", el, selectionData);
-            window.sd = selectionData;
 
             // FF handles blockquote differently on formatBlock
             // allowing nesting, we need to use outdent
