@@ -29,6 +29,7 @@
       cursor: pointer;
       min-height: 34px;
       padding-top: 4px;
+      padding-right: 24px;  // For delete button
 
       .status,
       .category {
@@ -62,7 +63,7 @@
         &.low    {  background-color: #2487d0;  }
       }
 
-      .ticket-delete {
+      .item-delete {
         padding-right: 3px;
 
         button {
@@ -74,7 +75,8 @@
 
       &:hover {
         background-color: darken($secondary-color, 5%);
-        .ticket-delete > button {
+        padding-right: 0;
+        .item-delete > button {
           // visibility: visible;
           display: inline;
         }

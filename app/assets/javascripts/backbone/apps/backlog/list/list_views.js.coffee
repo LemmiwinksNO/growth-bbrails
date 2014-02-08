@@ -40,7 +40,7 @@
     # two triggers -> click the item, and click delete button
     triggers:
       "click"                 : "backlog:item:clicked"
-      "click .backlog-delete" : "backlog:delete:clicked"
+      "click .item-delete" : "backlog:delete:clicked"
 
   class List.Empty extends App.Views.ItemView
     template: "backlog/list/_empty"
