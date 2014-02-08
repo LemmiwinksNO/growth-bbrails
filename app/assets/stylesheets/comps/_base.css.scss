@@ -12,6 +12,7 @@ html, body								{  height: 100%;  }
 }
 
 #main-region							{
+  padding-top: 45px;
 	section									{  margin: 10px 0;  }
 }
 [data-wrapper].opacity		{  @include opacity(0.4);  }

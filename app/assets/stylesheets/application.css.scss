@@ -12,18 +12,13 @@
 
 @import "compass/css3";
 
-// @import "twitter/bootstrap";
-
-// @import "font-awesome";
-
-// @import "static";
-
 @import "foundation";
-
 @import "foundation-icons";
 
 @import "vendor/foundation_and_overrides";
 @import "vendor/jquery-te-1.4.0";  // WYSIWYG editor
+@import "vendor/medium-editor";
+@import "vendor/hljs-monokai-sublime";
 
 @import "utils/_vars";
 
@@ -33,9 +28,11 @@
 @import "comps/_images";
 @import "comps/_jqte";
 @import "comps/_box";
+@import "comps/_medium-editor";
 
 @import "apps/header";
 @import "apps/footer";
 @import "apps/crew";
 @import "apps/sprint";
 @import "apps/backlog";
+@import "apps/wiki";
