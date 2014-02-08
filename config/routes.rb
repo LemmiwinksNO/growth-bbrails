@@ -13,6 +13,7 @@ Episode07::Application.routes.draw do
   match "staticlist" => "application#staticlist"
   match "staticform" => "application#staticform"
   match "staticbacklog" => "application#staticbacklog"
+  match "staticwiki" => "application#staticwiki"
 
   # Set root route (instead of public/index.html)
   # localhost:81/ -> renders views/application/index
