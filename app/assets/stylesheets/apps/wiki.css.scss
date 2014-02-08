@@ -1,3 +1,21 @@
+// For sliding down animation
+@-webkit-keyframes sliding-down{
+    0% {opacity:0;-webkit-transform:translate3D(0, -1000px, 0)}
+    100%{opacity:1;-webkit-transform:translate3D(0, 0px, 0)}
+}
+@-moz-keyframes sliding-down{
+    0% {opacity:0;-moz-transform:translate3D(0, -1000px, 0)}
+    100%{opacity:1;-moz-transform:translate3D(0, 0px, 0)}
+}
+@-o-keyframes sliding-down{
+    0% {opacity:0;-o-transform:translate3D(0, -1000px, 0)}
+    100%{opacity:1;-o-transform:translate3D(0, 0px, 0)}
+}
+@keyframes sliding-down{
+    0% {opacity:0;transform:translate3D(0, -1000px, 0)}
+    100%{opacity:1;transform:translate3D(0, 0px, 0)}
+}
+
 #TOC {
   bottom: auto;
   max-height: 100%;
