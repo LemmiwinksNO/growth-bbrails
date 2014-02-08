@@ -55,6 +55,7 @@ if (typeof module === 'object') {
     // http://stackoverflow.com/questions/1197401/how-can-i-get-the-element-the-caret-is-in-with-javascript-when-using-contentedi
     // by You
     function getSelectionStart() {
+        // console.log("getSelectionStart");
         var node = document.getSelection().anchorNode,
             startNode = (node && node.nodeType === 3 ? node.parentNode : node);
         return startNode;
@@ -63,6 +64,7 @@ if (typeof module === 'object') {
     // http://stackoverflow.com/questions/4176923/html-of-selected-text
     // by Tim Down
     function getSelectionHtml() {
+        // console.log("getSelectionHtml");
         var i,
             html = '',
             sel,
@@ -128,7 +130,7 @@ if (typeof module === 'object') {
                     this.elements[i].setAttribute('data-placeholder', this.options.placeholder);
                 }
                 this.elements[i].setAttribute('data-medium-element', true);
-                this.bindParagraphCreation(i).bindReturn(i).bindTab(i);
+                this.bindParagraphCreation(i).bindReturn(i).bindTab(i).hotkeys(i);
                 if (!this.options.disableToolbar && !this.elements[i].getAttribute('data-disable-toolbar')) {
                     addToolbar = true;
                 }
@@ -158,25 +160,42 @@ if (typeof module === 'object') {
         bindParagraphCreation: function (index) {
             var self = this;
             this.elements[index].addEventListener('keyup', function (e) {
+                // console.log("bindParagraphCreation");
                 var node = getSelectionStart(),
                     tagName;
                 if (node && node.getAttribute('data-medium-element') && node.children.length === 0 &&
                         !(self.options.disableReturn || node.getAttribute('data-disable-return'))) {
+                    // console.log("here");
                     document.execCommand('formatBlock', false, 'p');
                 }
                 if (e.which === 13 && !e.shiftKey) {
                     node = getSelectionStart();
                     tagName = node.tagName.toLowerCase();
+
                     if (!(self.options.disableReturn || this.getAttribute('data-disable-return')) &&
                             tagName !== 'li' && !self.isListItemChild(node)) {
-                        document.execCommand('formatBlock', false, 'p');
+
+                            document.execCommand('formatBlock', false, 'p');
                         if (tagName === 'a') {
                             document.execCommand('unlink', false, null);
                         }
                     }
+
+                    // For code segments, highlight on enter.
+                    // NOTE: Could do it on keyup.
+                    if (tagName == 'pre') {
+                      // Turn spaces into '.'
+                      var className = (node.className).trim().replace(/\s+/g, '.');
+                      if (className)
+                          className = "." + className;
+
+                      $(tagName + className).each(function(i, e){
+                          hljs.highlightBlock(e);
+                      });
+                    }
                 }
             });
-            return this;
+            return this;  // for chaining purposes
         },
 
         isListItemChild: function (node) {
@@ -205,7 +224,7 @@ if (typeof module === 'object') {
                     }
                 }
             });
-            return this;
+            return this;  // for chaining purposes
         },
 
         bindTab: function (index) {
@@ -219,6 +238,52 @@ if (typeof module === 'object') {
                     }
                 }
             });
+            return this;  // for chaining purposes
+        },
+
+        /**
+         * Custom hotkeys
+         *
+         * ctrl+1 => h3
+         * ctrl+2 => h4
+         * ctrl+3 => ordered list
+         * ctrl+4 => unordered list
+         * ctrl+5 => blockquote
+         * ctrl+6 => code
+         */
+        hotkeys: function (index) {
+            this.elements[index].addEventListener('keydown', function (e) {
+                if (e.ctrlKey) {
+                    switch (e.which) {
+                        case 49:
+                            e.preventDefault();
+                            this.execAction("append-h3", e);
+                            break;
+                        case 50:
+                            e.preventDefault();
+                            this.execAction("append-h4", e);
+                            break;
+                        case 51:
+                            e.preventDefault();
+                            this.execAction("insertorderedlist", e);
+                            break;
+                        case 52:
+                            e.preventDefault();
+                            this.execAction("insertunorderedlist", e);
+                            break;
+                        case 53:
+                            e.preventDefault();
+                            this.execAction("append-blockquote", e);
+                            break;
+                        case 54:
+                            e.preventDefault();
+                            this.execAction("append-pre", e);
+                            break;
+                        default:
+                    }
+                }
+            }.bind(this));
+            return this;  // for chaining purposes
         },
 
         buttonTemplate: function (btnType) {
@@ -351,6 +416,7 @@ if (typeof module === 'object') {
         },
 
         checkSelection: function () {
+            // console.log("checkSelection");
             var newSelection,
                 selectionElement;
             if (this.keepToolbarAlive !== true && !this.options.disableToolbar) {
@@ -509,6 +575,7 @@ if (typeof module === 'object') {
         },
 
         execAction: function (action, e) {
+            // console.log("execAction", action, this);
             if (action.indexOf('append-') > -1) {
                 this.execFormatBlock(action.replace('append-', ''));
                 this.setToolbarPosition();
@@ -538,6 +605,9 @@ if (typeof module === 'object') {
 
         execFormatBlock: function (el) {
             var selectionData = this.getSelectionData(this.selection.anchorNode);
+            // console.log("execFormatBlock", el, selectionData);
+            window.sd = selectionData;
+
             // FF handles blockquote differently on formatBlock
             // allowing nesting, we need to use outdent
             // https://developer.mozilla.org/en-US/docs/Rich-Text_Editing_in_Mozilla
@@ -548,10 +618,19 @@ if (typeof module === 'object') {
             if (selectionData.tagName === el) {
                 el = 'p';
             }
-            return document.execCommand('formatBlock', false, el);
+            // return document.execCommand('formatBlock', false, el);
+            document.execCommand('formatBlock', false, el);
+
+            // If pre element, add .code and highlight it
+            if (el == 'pre') {
+              selectionData = this.getSelectionData(this.selection.anchorNode);
+              selectionData.el.className += " code";
+              hljs.highlightBlock(selectionData.el);
+            }
         },
 
         getSelectionData: function (el) {
+            console.log("getSelectionData");
             var tagName;
 
             if (el && el.tagName) {
@@ -642,6 +721,7 @@ if (typeof module === 'object') {
         },
 
         setTargetBlank: function () {
+            // console.log("setTargetBlank");
             var el = getSelectionStart(),
                 i;
             if (el.tagName.toLowerCase() === 'a') {
@@ -732,9 +812,10 @@ if (typeof module === 'object') {
                             paragraphs = e.clipboardData.getData('text/plain').split(/[\r\n]/g);
                             for (p = 0; p < paragraphs.length; p += 1) {
                                 if (paragraphs[p] !== '') {
-                                    html += '<p>' + paragraphs[p] + '</p>';
+                                    html += '<p>' + self.escapeHTML(paragraphs[p]) + '</p>';
                                 }
                             }
+                            window.html = html;
                             document.execCommand('insertHTML', false, html);
                         } else {
                             document.execCommand('insertHTML', false, e.clipboardData.getData('text/plain'));
@@ -745,6 +826,10 @@ if (typeof module === 'object') {
                 this.elements[i].addEventListener('paste', pasteWrapper);
             }
             return this;
+        },
+
+        escapeHTML: function (html) {
+          return html.replace(/&/,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
         },
 
         setPlaceholders: function () {
