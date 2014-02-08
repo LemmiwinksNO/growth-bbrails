@@ -1,0 +1,53 @@
+.medium-editor {
+  outline: none;
+  margin: 0 0 20px 0;
+  padding: 0 0 20px 0;
+  border-bottom: 1px solid #dbdbdb;
+  font-family: "freight-text-pro",Georgia,Cambria,"Times New Roman",Times,serif;
+  font-size: 22px;
+  cursor: text;  // Ideally it is default when not in edit mode.
+
+  ol,
+  ul {
+    font-size: 22px;
+  }
+
+  pre {
+    font-size: 16px;
+    margin-bottom: 20px;
+    p {
+      font-size: 16px;
+      margin-bottom: 0;
+      line-height: 16px;
+    }
+  }
+
+  p {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 2px;
+    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  }
+
+  h4 {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 2px;
+    font-family: "jaf-bernino-sans","Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+  }
+
+  blockquote {
+    border-left: 3px solid #57ad68;
+    font-style: italic;
+    padding-left: 20px;
+    margin-left: -26px;
+    padding-bottom: 3px;
+  }
+}
