@@ -1,0 +1,12 @@
+// Syntax = name time timing_function
+@mixin animation ($properties) {
+    -webkit-animation: $properties;
+    -moz-animation: $properties;
+    animation: $properties;
+}
+
+@mixin animation-fill-mode ($mode) {
+    -webkit-animation-fill-mode: $mode;
+    -moz-animation-fill-mode: $mode;
+    animation-fill-mode: $mode;
+}

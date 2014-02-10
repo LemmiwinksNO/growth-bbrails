@@ -1,9 +1,11 @@
+$header_color: #111;
+
 #header-region		{
   position: fixed;
   width: 100%;
   z-index: 9999;
-	#logo					{  width: 30px; height: 30px; display: inline-block; position: relative;  }
-	a							{  height: 45px;  }
-  .top-bar      {  background: #111;  }
-  li > a        {  background: #111; &:hover { background: lighten(#111, 10%); } }
+	#logo		    {  width: 30px; height: 30px; display: inline-block; position: relative;  }
+	a			    {  height: 45px;  }
+  .top-bar          {  background: $header_color; z-index: 9999 }
+  li > a            {  background: $header_color; &:hover { background: lighten($header_color, 10%); } }
 }

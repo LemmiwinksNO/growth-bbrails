@@ -17,80 +17,45 @@
 }
 
 #TOC {
+  @include box-sizing(border-box);
   bottom: auto;
   max-height: 100%;
-
-  background-color: rgba(46,48,58,0.98);
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  background-color: rgba(0,0,0,0.90);
   color: #fff;
   display: none;
   // font-family: "Gotham","Gotham SSm A","Gotham SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-family: jaf-bernino-sans, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
   overflow-y: scroll;
   padding: 0 3em;
-  position: fixed;
-  top: 45px;
-  z-index: 99;
+  // position: fixed;
+  // top: 45px;
+  // z-index: 99;
 
   font-size: 1.125em;
   line-height: 1.6875em;
 
   &.slide-down {
-    -webkit-animation: sliding-down 0.25s ease;
-    -moz-animation: sliding-down 0.25s ease;
-    animation: sliding-down 0.25s ease;
-    -webkit-animation-fill-mode: both;
-    -moz-animation-fill-mode: both;
-    animation-fill-mode: both;
-
+    @include animation(sliding-down 0.25s ease);
+    @include animation-fill-mode(both);
     display: block;
   }
 
   >ul {
-    -webkit-column-gap: 4em;
-    -moz-column-gap: 4em;
-    column-gap: 4em;
+    @include column-gap(4em);
+    @include transform(translateZ(0));
     margin: 0;
     padding-top: 2em;
     padding-bottom: 2em;
     list-style-type: none;
 
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
-
-
     // NOTE column-count should vary based on screen size.
-    @media screen and (min-width:33.33333em) {
-      -webkit-column-count: 2;
-      -moz-column-count: 2;
-      column-count: 2;
-    }
-    @media screen and (min-width:44.44444em) {
-      -webkit-column-count: 3;
-      -moz-column-count: 3;
-      column-count: 3;
-    }
-    @media screen and (min-width:66.66667em) {
-      -webkit-column-count: 4;
-      -moz-column-count: 4;
-      column-count: 4;
-    }
-    @media screen and (min-width:77.777783em) {
-      -webkit-column-count: 5;
-      -moz-column-count: 5;
-      column-count: 5;
-    }
+    @media screen and (min-width:33.33333em)  { @include column-count(2); }
+    @media screen and (min-width:44.44444em)  { @include column-count(3); }
+    @media screen and (min-width:66.66667em)  { @include column-count(4); }
+    @media screen and (min-width:77.777783em) { @include column-count(5); }
 
     li {
-      -webkit-column-break-inside: avoid;
-      -moz-column-break-inside: avoid;
-      -o-column-break-inside: avoid;
-      -ms-column-break-inside: avoid;
-      column-break-inside: avoid;
+      @include column-break-inside(avoid);
       font-weight: bold;
       line-height: 1.5em;
       margin-bottom: 1.5em;
@@ -108,9 +73,7 @@
         margin-bottom: .5em;
         text-transform: uppercase;
         text-decoration: none;
-        -webkit-transition: color 0.1s linear;
-        -moz-transition: color 0.1s linear;
-        transition: color 0.1s linear;
+        @include transition(color 0.1s linear);
 
         &:hover {
           background-color: transparent;
