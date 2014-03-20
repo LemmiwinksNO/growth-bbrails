@@ -1,0 +1,220 @@
+
+#dates {
+  text-align: right;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  list-style: none;
+  clear: none;
+  // width: 140px;
+  display: inline-block;
+  margin: 230px 30px 0 0;
+  // margin-top: 230px;
+  padding: 0;
+  color: #ccc;
+}
+
+// This is the star to the left of the date
+#dates .date.complete {
+    background-image: url("complete_day.png");
+    background-repeat: no-repeat;
+    background-position: 10px 5px;
+}
+
+#dates .month {
+  font-family: "TradeGothicNextSRW01-Bd 707064",  "Arial Narrow",  sans-serif;
+  text-transform: uppercase;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+#dates .day {
+  font-family: Helvetica,  sans-serif;
+  font-family: "TradeGothicNextSRW01",  "Arial Narrow",  sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  margin: -0.2em 0 0;
+  padding: 0;
+}
+#dates li {
+  clear: both;
+  background-image: none;
+  background-repeat: repeat-x;
+  height: 60px;
+  margin: 0 20px 0 0;
+  padding: 0;
+}
+
+// #chain-container {
+//     display: inline-block;
+//     clear: none;
+//     vertical-align: top;
+// }
+
+.single-chain {
+    position: relative;
+    display: inline-block !important;
+    clear: none !important;
+    vertical-align: top !important;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+
+.single-chain ul {
+  // -webkit-box-sizing: border-box;
+  // -moz-box-sizing: border-box;
+  // box-sizing: border-box;
+  @include box-sizing(border-box);
+  list-style: none;
+  clear: none;
+  margin: 0 0 0 0;
+  padding: 0 0 0 40px;
+}
+
+.chain-title {
+  -webkit-transform: translate3d(0,  0,  0);
+  // -webkit-transition: opacity 0.4s ease;
+  // -moz-transition: opacity 0.4s ease;
+  // -o-transition: opacity 0.4s ease;
+  // transition: opacity 0.4s ease;
+  @include transition(opacity 0.4s ease);
+  background: #0f9ec7;
+  box-sizing: border-box;
+  display: block;
+  width: 140px;
+  height: 180px;
+  text-align: center;
+  position: relative;
+  // -moz-border-radius: 10px;
+  // -webkit-border-radius: 10px;
+  // -o-border-radius: 10px;
+  // -ms-border-radius: 10px;
+  // border-radius: 10px;
+  @include border-radius(10px);
+  background: -moz-linear-gradient(top,  #d1f2f9,  #ade5f3);
+  background: -webkit-gradient(linear,  left top,  left bottom,  from(#d1f2f9),  to(#ade5f3));
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.chain-title h3 {
+  // box-sizing: border-box;
+  // font-family: "TradeGothicNextSRW01-Bd 707064",  "Arial Narrow",  sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 24px;
+  // height: 100px;
+  overflow: hidden;
+  line-height: 28px;
+  // height: 140px;
+  margin: 0;
+  padding: 10px 5px 0;
+  word-wrap: break-word;
+}
+
+.chain-title .delete-btn {
+  display: none;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 28px;
+  height: 28px;
+  background-image: url(/assets/delete.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  text-indent: -100em;
+  overflow: hidden;
+}
+
+.chain-title.chain-title:hover>.delete-btn {
+  display: block;
+}
+
+.chain-arrow {
+  // -webkit-transition: opacity 0.4s ease;
+  // -moz-transition: opacity 0.4s ease;
+  // -o-transition: opacity 0.4s ease;
+  // transition: opacity 0.4s ease;
+  @include transition(opacity 0.4s ease);
+  position: relative;
+  width: 0px;
+  height: 0px;
+  margin: 0 auto 0 auto;
+  top: 0px;
+  border-style: solid solid solid solid;
+  border-width: 15px;
+  border-color: #80dcf4 transparent transparent transparent;
+}
+
+
+
+
+
+
+
+
+
+
+// table.habit-tracker {
+//     margin-left: auto;
+//     margin-right: auto;
+
+//     thead tr th {
+//         font-size: 18px;
+//     }
+
+//     tbody tr td {
+//         text-align: center;
+//         font-size: 1.5rem;
+//         padding: .25rem;
+//     }
+
+//     input[type="checkbox"] + label,
+//     input[type="radio"] + label {
+//         margin-left: auto;
+//         margin-right: auto;
+//     }
+// }
+
+// /* .squaredThree */
+// .checkbox {
+//   width: 20px;
+//   position: relative;
+//   margin: 20px auto;
+//   label {
+//     width: 20px;
+//     height: 20px;
+//     cursor: pointer;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     @include background( linear-gradient(top, #222 0%, #45484d 100%) );
+//     @include border-radius( 4px );
+//     @include box-shadow( inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,.4) );
+//     &:after {
+//       content: '';
+//       width: 9px;
+//       height: 5px;
+//       position: absolute;
+//       top: 4px;
+//       left: 4px;
+//       border: 3px solid #fcfff4;
+//       border-top: none;
+//       border-right: none;
+//       background: transparent;
+//       @include opacity( 0 );
+//       @include transform( rotate(-45deg) );
+//     }
+//     &:hover::after {
+//       @include opacity( 0.3 );
+//     }
+//   }
+//   input[type=checkbox] {
+//     visibility: hidden;
+//     &:checked + label:after {
+//       @include opacity( 1 );
+//     }
+//   }
+// }
+/* end .squaredThree */

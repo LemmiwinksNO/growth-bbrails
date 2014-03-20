@@ -44,4 +44,5 @@ end
 
 group :development, :test do
   gem 'rails-dev-tweaks'
+  gem 'better_errors'
 end
