@@ -20,7 +20,7 @@
     #       App.mainRegion.show @layout
     initialize: (options) ->
 
-      user = App.User || App.request "user:entity"
+      App.User = App.User || App.request "user:entity"
 
       App.execute "when:fetched", App.User, =>
 

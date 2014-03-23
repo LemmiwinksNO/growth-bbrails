@@ -30,6 +30,8 @@
       users
 
     getUser: (id) ->
+      # TODO: Get id.
+      id = id || 1
       user = new Entities.User
         id: id
       user.fetch()
