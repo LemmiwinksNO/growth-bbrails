@@ -1,11 +1,13 @@
 $header_color: #111;
 
 #header-region		{
-  position: fixed;
+  position: absolute;
   width: 100%;
-  z-index: 9999;
-	#logo		    {  width: 30px; height: 30px; display: inline-block; position: relative;  }
-	a			    {  height: 45px;  }
-  .top-bar          {  background: $header_color; z-index: 9999 }
+  // z-index: 9999;
+  .contain-to-grid  {  background: $header_color; }
+  .top-bar          {  background: $header_color; }
+  #logo             {  width: 30px; height: 30px; display: inline-block; position: relative;  }
+  a                 {  height: 45px;  }
   li > a            {  background: $header_color; &:hover { background: lighten($header_color, 10%); } }
+  .title-area       {  left: 20%; }
 }

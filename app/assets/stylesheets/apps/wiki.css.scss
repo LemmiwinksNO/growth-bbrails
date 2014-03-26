@@ -1,4 +1,272 @@
-// For sliding down animation
+/* Overlay */
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(153,204,51,0.9);
+  z-index: 1000;
+
+  /* Overlay closing cross */
+  .overlay-close {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    overflow: hidden;
+    border: none;
+    // background: url(../img/cross.png) no-repeat center center;
+    background: transparent;
+    // text-indent: 200%;
+    // color: transparent;
+    outline: none;
+    z-index: 100;
+    font-size: 54px;
+  }
+
+  /* Menu style */
+  nav {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    height: 60%;
+    font-size: 54px;
+    @include transform(translateY(-50%));
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;
+    height: 100%;
+    position: relative;
+
+    li {
+      display: block;
+      height: 20%;
+      height: calc(100% / 5);
+      min-height: 54px;
+      font-size: 54px;
+    }
+  }
+
+  ul li a {
+    font-weight: 300;
+    display: block;
+    color: #fff;
+    @include transition(color 0.2s);
+
+    &:hover,
+    &.focus { color: #e3fcb1; };
+  }
+}
+
+/* hugeinc Effects */
+.overlay-hugeinc {
+  opacity: 0;
+  visibility: hidden;
+  @include transition(opacity 0.5s, visibility 0s 0.5s);
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+      @include transition(opacity 0.5s);
+  }
+
+  nav {
+    -webkit-perspective: 1200px;
+    perspective: 1200px;
+  }
+
+  nav ul {
+    opacity: 0.4;
+    @include transform(translateY(-25%) rotateX(35deg));
+    @include transition(transform 0.5s, opacity 0.5s);
+  }
+
+  &.open nav ul {
+    opacity: 1;
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+
+  // &.close nav ul {
+  //   -webkit-transform: translateY(25%) rotateX(-35deg);
+  //   transform: translateY(25%) rotateX(-35deg);
+  // }
+}
+
+/* slidedown Effects */
+.overlay-slidedown {
+  visibility: hidden;
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -webkit-transition: -webkit-transform 0.4s ease-in-out, visibility 0s 0.4s;
+  transition: transform 0.4s ease-in-out, visibility 0s 0.4s;
+
+  ul li {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  &.open {
+    visibility: visible;
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    -webkit-transition: -webkit-transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out;
+  }
+}
+
+@media screen and (max-height: 30.5em) {
+  .overlay nav {
+    height: 70%;
+    font-size: 34px;
+  }
+  .overlay ul li {
+    min-height: 34px;
+  }
+}
+
+
+/* Sidebar */
+.sidebar {
+  background: #161124;
+  color: #fff;
+  position: fixed;
+  width: 270px;
+  top: 0;
+  bottom: 0;
+  left: -270px;
+  z-index: 100;
+  @include transition(all 300ms 0ms ease-out);
+}
+
+.sidebar .inner {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar .inner::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar .inner::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+  border-radius: 10px;
+}
+
+.sidebar .inner::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: #766d91;
+}
+
+.sidebar .inner::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(94,87,116,.7);
+}
+
+.sidebar .inner ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 20px;
+}
+
+.sidebar .inner li {
+  margin: 0;
+  font-size: 14px;
+  border-bottom: 1px dotted rgba(255,255,255,.2);
+  overflow: hidden;
+  @include transition(background-color 300ms 0 ease-out);
+}
+
+.sidebar .inner li:hover {
+  background: rgba(255,255,255,.05);
+}
+
+.sidebar .inner li span {
+  color: rgba(255,255,255,.2);
+  float: right;
+  display: block;
+  padding: 6px 3px 6px 0;
+}
+
+.sidebar .inner li a {
+  padding: 6px 0;
+  display: block;
+  color: #8d81c3;
+  font-weight: 400;
+  margin-right: 20px;
+  @include transition(all 300ms 0 ease-out);
+
+  &:visited { color: #8d81c3; }
+}
+
+.sidebar .inner li a:hover,.sidebar .inner li.active a {
+  color: #f4cd13;
+}
+
+.sidebar .inner li.active a:before {
+  content: "\276f";
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.sidebar .toggle {
+  right: -45px;
+  display: block;
+  height: 45px;
+  width: 45px;
+  position: absolute;
+  top: 0;
+  @include transition(all 300ms 0 ease-out);
+  -webkit-transition-delay: ease-out;
+  cursor: pointer;
+  z-index: 100;
+  background: rgba(22,17,36,.2);
+  color: #fff;
+  text-align: center;
+  text-overflow: clip;
+  font-size: 40px;
+  line-height: 45px;
+  overflow: hidden;
+  text-decoration: none;
+
+  &.TOC-toggle {
+    top: 45px;
+  }
+
+  &.overlay-toggle {
+    top: 90px;
+  }
+
+  &:hover {
+    background-color: rgba(22, 17, 36, .5);
+    color: #fff;
+  }
+}
+
+.toc-open .row    { left: 150px; position: relative; }
+.toc-open .toggle { background-color: #161124; }
+.toc-open .toc    { left: 0; z-index: 1000; }
+
+nav.site-nav {
+  z-index: 9999;
+  background-color: rgba(0,0,0,.9);
+  color: #fff;
+  position: fixed;
+  top: 0;
+  @include transition(all 300ms 0 ease-out);
+  -webkit-transition-delay: ease-out;
+
+  width: 100%;
+}
+
+
+// Playbook Dropdown
 @-webkit-keyframes sliding-down{
     0% {opacity:0;-webkit-transform:translate3D(0, -1000px, 0)}
     100%{opacity:1;-webkit-transform:translate3D(0, 0px, 0)}
@@ -20,19 +288,20 @@
   @include box-sizing(border-box);
   bottom: auto;
   max-height: 100%;
-  background-color: rgba(0,0,0,0.90);
   color: #fff;
   display: none;
-  // font-family: "Gotham","Gotham SSm A","Gotham SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
   font-family: jaf-bernino-sans, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
   overflow-y: scroll;
   padding: 0 3em;
+  background-color: rgba(0,0,0,0.8);
+  // font-family: "Gotham","Gotham SSm A","Gotham SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
   // position: fixed;
-  // top: 45px;
-  // z-index: 99;
 
   font-size: 1.125em;
   line-height: 1.6875em;
+  position: fixed;
+  height: 100%;
+  z-index: 100;
 
   &.slide-down {
     @include animation(sliding-down 0.25s ease);
