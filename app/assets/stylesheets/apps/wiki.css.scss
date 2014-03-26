@@ -192,7 +192,7 @@
   overflow: hidden;
   text-decoration: none;
 
-  &.TOC-toggle { top: 45px; }
+  &.playbook-toggle { top: 45px; }
 
   &.overlay-toggle { top: 90px; }
 
@@ -236,14 +236,14 @@ nav.site-nav {
     100% {opacity:1;transform:translate3D(0, 0px, 0)}
 }
 
-#TOC {
+.playbook {
   @include box-sizing(border-box);
   bottom: auto;
   max-height: 100%;
   color: #fff;
   display: none;
   font-family: jaf-bernino-sans, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Geneva, Verdana, sans-serif;
-  overflow-y: scroll;
+  // overflow-y: scroll;
   padding: 0 3em;
   background-color: rgba(0,0,0,0.8);
   // font-family: "Gotham","Gotham SSm A","Gotham SSm B","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -316,5 +316,14 @@ nav.site-nav {
         }
       }
     }
+  }
+}
+
+
+/** WIKI Stuff **/
+.wiki-item {
+  h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
   }
 }
