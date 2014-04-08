@@ -108,7 +108,8 @@
 
 /* Sidebar */
 .sidebar {
-  background: #161124;
+  // background: #161124;
+  background: black;
   color: #fff;
   position: fixed;
   width: 270px;
@@ -146,7 +147,8 @@
 .sidebar .inner li:hover { background: rgba(255,255,255,.05); }
 
 .sidebar .inner li span {
-  color: rgba(255,255,255,.2);
+  color: rgba(255, 255, 255, .6);
+  // color: rgba(255,255,255,.2);
   float: right;
   display: block;
   padding: 6px 3px 6px 0;
@@ -155,16 +157,20 @@
 .sidebar .inner li a {
   padding: 6px 0;
   display: block;
-  color: #8d81c3;
-  font-weight: 400;
+  // color: #8d81c3;
+  // font-weight: 400;
+  color: #b3b3b1;
+  font-weight: bold;
   margin-right: 20px;
   @include transition(all 300ms 0 ease-out);
 
   &:visited { color: #8d81c3; }
 }
 
-.sidebar .inner li a:hover,.sidebar .inner li.active a {
-  color: #f4cd13;
+.sidebar .inner li a:hover,
+.sidebar .inner li.active a {
+  // color: #f4cd13;
+  color: #fff;
 }
 
 .sidebar .inner li.active a:before {

@@ -15,7 +15,7 @@ html, body								{  height: 100%;  }
 }
 
 #main-region							{
-  padding-top: 60px;
+  padding-top: $pushHeight;
 	section									{  margin: 10px 0;  }
 }
 [data-wrapper].opacity		{  @include opacity(0.4);  }
