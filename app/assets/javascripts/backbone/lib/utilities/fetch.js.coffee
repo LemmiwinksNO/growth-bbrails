@@ -4,7 +4,7 @@
 #
 # Episode 7, part 1, 56 min
 
-@PlanetExpress.module "Entities", (Entities, App, Backbone, Marionette, $, _) ->
+@PlanetExpress.module "Utilities", (Utilities, App, Backbone, Marionette, $, _) ->
 
   # Wait until all models are fetched, then call callback.
   # i.e. don't load the page until we have the models.

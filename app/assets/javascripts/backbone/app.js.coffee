@@ -29,14 +29,6 @@
   App.reqres.setHandler "default:region", ->
     App.mainRegion
 
-  # Set/unset controller ids to App._registry for debugging purposes.
-  # We can use this to make sure controllers get closed.
-  App.commands.setHandler "register:instance", (instance, id) ->
-    App.register instance, id if App.environment is "development" or "test"
-
-  App.commands.setHandler "unregister:instance", (instance, id) ->
-    App.unregister instance, id if App.environemnt is "development" or "test"
-
   # Fires after initializers have finished.
   App.on "initialize:after", ->
     # Listen for URL fragment changes and trigger routing code in sub-apps, which

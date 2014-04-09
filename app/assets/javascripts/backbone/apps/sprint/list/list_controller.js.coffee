@@ -8,7 +8,7 @@
 
 @PlanetExpress.module "SprintApp.List", (List, App, Backbone, Marionette, $, _) ->
 
-  class List.Controller extends App.Controllers.Base
+  class List.Controller extends App.Controllers.Application
 
     # (1) Instantiate tickets collection and fetch <br>
     # (2) When tickets collection is fetched, run callback <br>

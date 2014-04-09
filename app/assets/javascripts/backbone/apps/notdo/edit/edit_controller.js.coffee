@@ -1,6 +1,6 @@
 @PlanetExpress.module "NotdoApp.Edit", (Edit, App, Backbone, Marionette, $, _) ->
 
-  class Edit.Controller extends App.Controllers.Base
+  class Edit.Controller extends App.Controllers.Application
 
     initialize: (options) ->
       # Sets id and item from options.id and options.item

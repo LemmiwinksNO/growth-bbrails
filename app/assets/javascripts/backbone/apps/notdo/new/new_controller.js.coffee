@@ -1,6 +1,6 @@
 @PlanetExpress.module "NotdoApp.New", (New, App, Backbone, Marionette, $, _) ->
 
-  class New.Controller extends App.Controllers.Base
+  class New.Controller extends App.Controllers.Application
 
     initialize: (options) ->
       notdo = App.request "new:notdo:entity"
@@ -18,7 +18,7 @@
 
       # Once form is closed, close the region.
       @listenTo newView, "form:cancel", =>  # Should we be listening to formView?
-        @region.close()  # @region attached via App.Controllers.Base
+        @region.close()  # @region attached via App.Controllers.Application
 
       @show formView
 

@@ -10,17 +10,32 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//  Third party vendor/library code
 //= require modernizr
 //= require jquery
-//= require lib/underscore
-//= require lib/backbone
-//= require lib/marionette
+//= require underscore
+//= require backbone
+//= require marionette
 //= require js-routes
-//= require_tree ./vendor
-//= require_tree ./backbone/config
+//= require syphon
+//= require foundation.min
+//= require highlight
+//= require jquery-te-1.4.0.min
+//= require medium_editor
+
+//  Main config
+//= require_tree ./config
+
+//  Backbone app
 //= require backbone/app
-//= require_tree ./backbone/controllers
-//= require_tree ./backbone/views
+
+//  Support lib code
+//= require_tree ./backbone/lib/entities
+//= require_tree ./backbone/lib/utilities
+//= require_tree ./backbone/lib/views
+//= require_tree ./backbone/lib/controllers
+//= require_tree ./backbone/lib/components
+
+//  Shared app entities and working applications
 //= require_tree ./backbone/entities
-//= require_tree ./backbone/components
 //= require_tree ./backbone/apps

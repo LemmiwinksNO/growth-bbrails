@@ -1,6 +1,6 @@
 @PlanetExpress.module "BacklogApp.New", (New, App, Backbone, Marionette, $, _) ->
 
-  class New.Controller extends App.Controllers.Base
+  class New.Controller extends App.Controllers.Application
 
     initialize: (options) ->
       { type, collection } = options

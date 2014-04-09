@@ -8,7 +8,7 @@
 
 @PlanetExpress.module "NotdoApp.List", (List, App, Backbone, Marionette, $, _) ->
 
-  class List.Controller extends App.Controllers.Base
+  class List.Controller extends App.Controllers.Application
 
     # (1) Instantiate notdos collection and fetch <br>
     # (2) When notdos collection is fetched, run callback <br>

@@ -12,7 +12,7 @@ class FocusAreaController < ApplicationController
   def create  # Create new focus
     @focus = FocusArea.new
     if @focus.update_attributes params
-      render "focus/show"
+      render "focus_area/show"
     else
       respond_with @focus
     end
@@ -28,7 +28,7 @@ class FocusAreaController < ApplicationController
     @focus = FocusArea.find params[:id]
 
     if @focus.update_attributes params
-      render "focus/show"
+      render "focus_area/show"
     else
       respond_with @focus
     end

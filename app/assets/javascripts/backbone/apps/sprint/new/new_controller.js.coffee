@@ -1,6 +1,6 @@
 @PlanetExpress.module "SprintApp.New", (New, App, Backbone, Marionette, $, _) ->
 
-  class New.Controller extends App.Controllers.Base
+  class New.Controller extends App.Controllers.Application
 
     initialize: (options) ->
       collection = options.collection
@@ -21,7 +21,7 @@
 
       # Once form is closed, close the region.
       @listenTo newView, "form:cancel", =>
-        @region.close()  # @region attached via App.Controllers.Base
+        @region.close()  # @region attached via App.Controllers.Application
 
       @show formView
 

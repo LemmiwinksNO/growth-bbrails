@@ -1,6 +1,6 @@
 @PlanetExpress.module "CrewApp.New", (New, App, Backbone, Marionette, $, _) ->
 
-  class New.Controller extends App.Controllers.Base
+  class New.Controller extends App.Controllers.Application
 
     initialize: (options) ->
       member = App.request "new:crew:entity"
@@ -18,7 +18,7 @@
 
       # Now that this controller has access to the region, it can handle closing it.
       @listenTo newView, "form:cancel", =>
-        @region.close()  # @region attached via App.Controllers.Base
+        @region.close()  # @region attached via App.Controllers.Application
 
       @show formView
 

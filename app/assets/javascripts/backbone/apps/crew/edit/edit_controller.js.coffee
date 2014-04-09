@@ -1,6 +1,6 @@
 @PlanetExpress.module "CrewApp.Edit", (Edit, App, Backbone, Marionette, $, _) ->
 
-  class Edit.Controller extends App.Controllers.Base
+  class Edit.Controller extends App.Controllers.Application
 
     initialize: (options) ->
       # Sets id and member from options.id and options.member
